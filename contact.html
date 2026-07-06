@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — ADS TECH</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── CONTACT LAYOUT ───────────────────────────────────────────────────── */
+.contact-section { padding:90px 40px 130px; background:var(--offwhite); }
+.contact-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1.5fr; gap:80px; align-items:flex-start; }
+
+/* ── LEFT PANEL ───────────────────────────────────────────────────────── */
+.contact-left {}
+.contact-left h2 { font-family:var(--serif); font-size:clamp(32px,3.5vw,48px); font-weight:300; color:var(--navy); line-height:1.1; margin-bottom:16px; }
+.contact-left h2 em { font-style:italic; color:var(--gold); }
+.contact-left p { font-size:14.5px; color:var(--slate); line-height:1.85; margin-bottom:40px; max-width:400px; }
+
+.contact-info-cards { display:flex; flex-direction:column; gap:12px; margin-bottom:40px; }
+.ci-card {
+  display:flex; align-items:center; gap:18px;
+  background:white; border:1px solid rgba(0,0,0,.07);
+  border-radius:var(--r-md); padding:20px 22px;
+  transition:box-shadow .22s, border-color .22s;
+  text-decoration:none;
+}
+.ci-card:hover { box-shadow:var(--shadow-md); border-color:rgba(201,168,76,.3); }
+.ci-icon {
+  width:44px; height:44px; border-radius:11px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; font-size:20px;
+  background:rgba(8,15,26,.06); border:1px solid rgba(8,15,26,.08);
+}
+.ci-label { font-family:var(--mono); font-size:9.5px; letter-spacing:.14em; color:var(--gold); text-transform:uppercase; margin-bottom:4px; }
+.ci-value { font-size:14px; color:var(--navy); font-weight:500; }
+.ci-sub   { font-size:11.5px; color:var(--slate); margin-top:2px; }
+
+.avail-pill {
+  display:flex; align-items:center; gap:12px;
+  background:var(--navy); border-radius:var(--r-md); padding:18px 22px;
+}
+.avail-dot {
+  width:9px; height:9px; border-radius:50%; background:#10b981; flex-shrink:0;
+  animation:pulse-avail 2.2s ease-in-out infinite;
+}
+@keyframes pulse-avail {
+  0%,100% { box-shadow:0 0 0 0 rgba(16,185,129,.45); }
+  50%      { box-shadow:0 0 0 8px rgba(16,185,129,0); }
+}
+.avail-text { font-size:13px; color:var(--mist); }
+.avail-text strong { color:var(--cream); }
+
+.quick-links { margin-top:32px; border-top:1px solid rgba(0,0,0,.07); padding-top:28px; }
+.ql-title { font-family:var(--mono); font-size:10px; letter-spacing:.18em; color:var(--gold); text-transform:uppercase; margin-bottom:16px; }
+.ql-link {
+  display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--navy);
+  padding:11px 0; border-bottom:1px solid rgba(0,0,0,.06);
+  text-decoration:none; transition:color .2s, gap .2s;
+}
+.ql-link:hover { color:var(--gold); gap:14px; }
+.ql-arrow { font-size:11px; color:var(--gold); }
+
+/* ── RIGHT PANEL — FORM ───────────────────────────────────────────────── */
+.contact-form-wrap {
+  background:white; border:1px solid rgba(0,0,0,.07);
+  border-radius:var(--r-xl); padding:56px;
+  box-shadow:0 20px 80px rgba(0,0,0,.09);
+  position:sticky; top:90px;
+}
+.form-heading { font-family:var(--serif); font-size:34px; color:var(--navy); font-weight:300; margin-bottom:6px; }
+.form-heading em { font-style:italic; color:var(--gold); }
+.form-sub { font-size:13px; color:var(--slate); line-height:1.75; margin-bottom:40px; }
+
+/* project type chips */
+.project-chips { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:28px; }
+.pchip {
+  border:1.5px solid rgba(0,0,0,.09); border-radius:var(--r-md);
+  padding:16px 18px; cursor:pointer; transition:border-color .2s, background .2s;
+  display:flex; align-items:center; gap:12px;
+}
+.pchip:hover { border-color:rgba(201,168,76,.4); background:rgba(201,168,76,.03); }
+.pchip.selected { border-color:var(--gold); background:rgba(201,168,76,.05); }
+.pchip input { display:none; }
+.pchip-icon { font-size:22px; flex-shrink:0; }
+.pchip-name { font-size:13px; font-weight:500; color:var(--navy); }
+.pchip-sub  { font-size:11px; color:var(--slate); margin-top:2px; }
+
+/* form fields */
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.form-group { margin-bottom:18px; }
+.form-label {
+  display:block; font-family:var(--mono); font-size:9.5px; letter-spacing:.14em;
+  color:var(--slate); text-transform:uppercase; margin-bottom:8px;
+}
+.form-input, .form-textarea, .form-select {
+  width:100%; padding:14px 18px;
+  border:1.5px solid rgba(0,0,0,.09); border-radius:var(--r-md);
+  font-family:var(--sans); font-size:14px; color:var(--navy);
+  background:var(--cream); outline:none;
+  transition:border-color .22s, box-shadow .22s, background .22s;
+  -webkit-appearance:none;
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color:var(--gold); background:white;
+  box-shadow:0 0 0 3px rgba(201,168,76,.1);
+}
+.form-input::placeholder, .form-textarea::placeholder { color:rgba(0,0,0,.28); }
+.form-textarea { min-height:120px; resize:vertical; line-height:1.7; }
+
+.form-submit {
+  width:100%; padding:16px; background:var(--gold); color:white;
+  border:none; border-radius:var(--r-md); font-family:var(--sans);
+  font-size:14px; font-weight:500; letter-spacing:.03em; cursor:pointer;
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  transition:background .22s, transform .15s, box-shadow .22s; margin-top:6px;
+}
+.form-submit:hover { background:#a88438; transform:translateY(-1px); box-shadow:0 10px 32px rgba(201,168,76,.35); }
+.form-note { font-size:11.5px; color:rgba(0,0,0,.32); text-align:center; margin-top:14px; line-height:1.6; }
+
+/* success */
+.form-success { display:none; text-align:center; padding:48px 24px; }
+.fs-icon { font-size:60px; margin-bottom:20px; }
+.fs-title { font-family:var(--serif); font-size:32px; color:var(--navy); margin-bottom:12px; }
+.fs-desc { font-size:14px; color:var(--slate); line-height:1.75; margin-bottom:28px; }
+
+/* ── FAQ ──────────────────────────────────────────────────────────────── */
+.faq-section { padding:120px 40px; background:var(--navy); }
+.faq-inner { max-width:860px; margin:0 auto; }
+.faq-list { margin-top:64px; }
+.faq-item { border-bottom:1px solid var(--border); }
+.faq-item:first-child { border-top:1px solid var(--border); }
+.faq-btn {
+  width:100%; text-align:left; background:none; border:none; padding:26px 0;
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+  cursor:pointer; font-family:var(--serif); font-size:22px; color:var(--cream); font-weight:300;
+  transition:color .22s;
+}
+.faq-btn:hover { color:var(--gold); }
+.faq-chevron {
+  width:32px; height:32px; border-radius:50%; border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; color:var(--gold); transition:transform .32s, border-color .22s; flex-shrink:0;
+}
+.faq-btn:hover .faq-chevron { border-color:rgba(201,168,76,.4); }
+.faq-body { max-height:0; overflow:hidden; transition:max-height .36s ease, padding .3s; }
+.faq-body.open { max-height:280px; padding-bottom:26px; }
+.faq-body p { font-size:14px; color:rgba(255,255,255,.44); line-height:1.88; }
+
+/* ── OFFICE STRIP ──────────────────────────────────────────────────────── */
+.office-section { padding:80px 40px; background:var(--cream); }
+.office-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+.office-map {
+  background:var(--navy); border-radius:var(--r-xl); height:260px;
+  position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center;
+}
+.office-map::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 60% 60% at 50% 50%, rgba(14,123,114,.18) 0%, transparent 70%);
+}
+.office-pin { font-size:40px; position:relative; z-index:1; }
+.office-label { font-family:var(--serif); font-size:20px; color:rgba(255,255,255,.4); font-style:italic; margin-top:8px; position:relative; z-index:1; }
+.office-info h3 { font-family:var(--serif); font-size:32px; color:var(--navy); font-weight:300; margin-bottom:10px; }
+.office-info h3 em { font-style:italic; color:var(--gold); }
+.office-info p { font-size:14px; color:var(--slate); line-height:1.85; margin-bottom:20px; }
+.office-zone-list { display:flex; flex-wrap:wrap; gap:8px; }
+.oz-chip { font-family:var(--mono); font-size:10px; padding:6px 14px; border-radius:100px; background:rgba(8,15,26,.07); border:1px solid rgba(8,15,26,.1); color:var(--slate); }
+
+@media(max-width:1080px){
+  .contact-inner { grid-template-columns:1fr; gap:56px; }
+  .contact-form-wrap { position:static; }
+  .office-inner { grid-template-columns:1fr; }
+}
+@media(max-width:640px){
+  .project-chips { grid-template-columns:1fr; }
+  .form-row { grid-template-columns:1fr; }
+  .contact-form-wrap { padding:36px 28px; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">ĀDS <em>TECH</em></a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a><a href="produits.html">Produits</a>
+      <a href="services.html">Services</a><a href="apropos.html">À propos</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="tel:+212627616719" class="btn btn-outline-light btn-sm">📞 Appeler</a>
+      <a href="mailto:contact@adstech.com" class="btn btn-gold btn-sm">Envoyer un email →</a>
+    </div>
+    <button class="nav-burger" onclick="toggleMenu()">☰</button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html">Accueil</a><a href="produits.html">Produits</a>
+    <a href="services.html">Services</a><a href="apropos.html">À propos</a><a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Accueil</a><span>/</span>Contact</div>
+    <h1><em>Contactez</em>-nous</h1>
+    <p>Notre équipe est à votre écoute — pour une démonstration, une question technique ou pour démarrer votre projet de transformation numérique.</p>
+  </div>
+</section>
+
+<!-- CONTACT LAYOUT -->
+<section class="contact-section">
+  <div class="contact-inner">
+
+    <!-- LEFT -->
+    <div class="contact-left">
+      <h2>Parlons de<br>votre <em>projet</em></h2>
+      <p>Remplissez le formulaire ou contactez-nous directement. Nous vous répondons sous 24 heures — et souvent bien avant.</p>
+
+      <div class="contact-info-cards">
+        <a href="tel:+212627616719" class="ci-card">
+          <div class="ci-icon">📞</div>
+          <div>
+            <div class="ci-label">Téléphone / WhatsApp</div>
+            <div class="ci-value">+212 627 616 719</div>
+            <div class="ci-sub">Disponible 7j/7 — Réponse sous 2h</div>
+          </div>
+        </a>
+        <a href="mailto:contact@adstech.com" class="ci-card">
+          <div class="ci-icon">✉️</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-value">contact@adstech.com</div>
+            <div class="ci-sub">Réponse garantie sous 24h</div>
+          </div>
+        </a>
+        <div class="ci-card" style="cursor:default">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Localisation</div>
+            <div class="ci-value">Niamey, Niger</div>
+            <div class="ci-sub">Présence Maroc · Déploiements à distance</div>
+          </div>
+        </div>
+        <div class="ci-card" style="cursor:default">
+          <div class="ci-icon">🕐</div>
+          <div>
+            <div class="ci-label">Horaires</div>
+            <div class="ci-value">Lundi – Samedi : 8h – 17h</div>
+            <div class="ci-sub">GMT+1 (Niamey / Rabat)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="avail-pill">
+        <div class="avail-dot"></div>
+        <div class="avail-text"><strong>Disponible maintenant</strong> — Abdourahmane est joignable pour toute question technique ou commerciale.</div>
+      </div>
+
+      <div class="quick-links">
+        <div class="ql-title">Liens rapides</div>
+        <a href="produits.html" class="ql-link"><span class="ql-arrow">→</span>Demander une démo ADSClass</a>
+        <a href="produits.html" class="ql-link"><span class="ql-arrow">→</span>Demander une démo Hotel-PMS</a>
+        <a href="services.html" class="ql-link"><span class="ql-arrow">→</span>Discuter d'un projet sur mesure</a>
+        <a href="apropos.html" class="ql-link" style="border:none"><span class="ql-arrow">→</span>En savoir plus sur ADS TECH</a>
+      </div>
+    </div>
+
+    <!-- RIGHT — FORM -->
+    <div class="contact-form-wrap">
+      <div id="formView">
+        <div class="form-heading">Envoyez-nous<br>un <em>message</em></div>
+        <p class="form-sub">Pour une réponse immédiate, contactez-nous via WhatsApp au <strong style="color:var(--navy)">+212 627 616 719</strong>. Sinon, remplissez ce formulaire.</p>
+
+        <!-- Project type -->
+        <div class="form-label" style="margin-bottom:12px">Votre demande concerne</div>
+        <div class="project-chips" id="projectChips">
+          <label class="pchip selected">
+            <input type="radio" name="project" value="adsclass" checked>
+            <span class="pchip-icon">🎓</span>
+            <div><div class="pchip-name">ADSClass</div><div class="pchip-sub">Plateforme éducative</div></div>
+          </label>
+          <label class="pchip">
+            <input type="radio" name="project" value="hotel">
+            <span class="pchip-icon">🏨</span>
+            <div><div class="pchip-name">Hotel-PMS</div><div class="pchip-sub">Gestion hôtelière</div></div>
+          </label>
+          <label class="pchip">
+            <input type="radio" name="project" value="custom">
+            <span class="pchip-icon">⚙️</span>
+            <div><div class="pchip-name">Projet sur mesure</div><div class="pchip-sub">Développement &amp; IA</div></div>
+          </label>
+          <label class="pchip">
+            <input type="radio" name="project" value="other">
+            <span class="pchip-icon">💬</span>
+            <div><div class="pchip-name">Autre</div><div class="pchip-sub">Question générale</div></div>
+          </label>
+        </div>
+
+        <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Nom complet *</label>
+              <input class="form-input" type="text" placeholder="Votre nom" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Organisation</label>
+              <input class="form-input" type="text" placeholder="Établissement, entreprise…">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email *</label>
+              <input class="form-input" type="email" placeholder="votre@email.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Téléphone</label>
+              <input class="form-input" type="tel" placeholder="+212 6xx xx xx xx">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Pays / Ville</label>
+            <input class="form-input" type="text" placeholder="Ex. Niamey, Niger">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Votre message *</label>
+            <textarea class="form-textarea" placeholder="Décrivez votre projet, vos besoins ou vos questions…" required></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            <span>Envoyer le message</span>
+            <span style="font-size:16px">→</span>
+          </button>
+          <p class="form-note">Vos données restent strictement confidentielles et ne sont pas partagées avec des tiers.</p>
+        </form>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div class="form-success" id="formSuccess">
+        <div class="fs-icon">✅</div>
+        <div class="fs-title">Message envoyé !</div>
+        <p class="fs-desc">Merci pour votre message. Abdourahmane vous répondra dans les 24 heures.<br><br>Pour une réponse immédiate :<br><strong style="color:var(--navy)">WhatsApp : +212 627 616 719</strong></p>
+        <a href="index.html" class="btn btn-gold">← Retour à l'accueil</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:12px"><span style="width:28px;height:1px;background:var(--gold);display:inline-block"></span>FAQ</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:300;color:var(--cream);line-height:1.07">Questions <em style="font-style:italic;color:var(--gold)">fréquentes</em></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          Comment se déroule une démonstration d'ADSClass ?
+          <div class="faq-chevron">↓</div>
+        </button>
+        <div class="faq-body"><p>Après votre demande, nous organisons un appel visio de 45 minutes durant lequel nous vous présentons en direct toutes les fonctionnalités d'ADSClass : gestion académique, module IA RAG, finances et tableaux de bord. Nous pouvons ensuite configurer un accès démo personnalisé pour votre établissement pendant 30 jours.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          Quel est le délai de déploiement d'ADSClass ?
+          <div class="faq-chevron">↓</div>
+        </button>
+        <div class="faq-body"><p>Le déploiement complet d'ADSClass prend en moyenne 10 à 15 jours ouvrables : installation et configuration (J+1 à J+5), importation de vos données existantes (J+5 à J+10), formation du personnel et tests (J+10 à J+15), mise en production finale (J+15). Un support intensif est assuré les 30 premiers jours.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          La sécurité des données est-elle garantie ?
+          <div class="faq-chevron">↓</div>
+        </button>
+        <div class="faq-body"><p>Absolument. Vos données sont hébergées sur infrastructure cloud sécurisée avec chiffrement SSL/TLS 1.3, sauvegardes automatiques quotidiennes, et isolation totale par établissement. Nous suivons les recommandations OWASP Top 10 et assurons une disponibilité de 99,5 % avec monitoring continu 24/7.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          Le support technique est-il inclus après déploiement ?
+          <div class="faq-chevron">↓</div>
+        </button>
+        <div class="faq-body"><p>Oui — le support technique est inclus dans l'abonnement. Nous intervenons via WhatsApp et email avec un délai de réponse garanti sous 24h. Les mises à jour régulières sont déployées automatiquement sans interruption de service, et nous assurons un accompagnement continu dans l'évolution de votre solution.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          Hotel-PMS s'adapte-t-il aux petits établissements ?
+          <div class="faq-chevron">↓</div>
+        </button>
+        <div class="faq-body"><p>Hotel-PMS est conçu pour s'adapter à tout type d'établissement — de la maison d'hôtes à la chaîne hôtelière multi-sites. Le système est entièrement paramétrable selon votre configuration spécifique : nombre de chambres, types de tarification, services additionnels. Chaque déploiement est précédé d'une réunion de cadrage.</p></div>
+      </div>
+      <div class="faq-item" style="border-bottom:none">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          Intervenez-vous en dehors du Niger ?
+          <div class="faq-chevron">↓</div>
+        </button>
+        <div class="faq-body"><p>Oui. ADS TECH opère depuis Niamey avec une présence au Maroc, et cible l'ensemble de l'Afrique de l'Ouest : Burkina Faso, Mali, Bénin, Sénégal, Côte d'Ivoire. Tous nos déploiements peuvent être réalisés entièrement à distance, avec des déplacements sur site pour les projets d'envergure.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFICE -->
+<section class="office-section">
+  <div class="office-inner">
+    <div class="office-map">
+      <div style="text-align:center;position:relative;z-index:1">
+        <div class="office-pin">📍</div>
+        <div class="office-label">Niamey, Niger</div>
+      </div>
+    </div>
+    <div class="office-info">
+      <h3>Basés à <em>Niamey</em>,<br>actifs partout</h3>
+      <p>Notre siège est à Niamey, capitale du Niger. Avec une présence au Maroc et une capacité de déploiement à distance, nous accompagnons des clients dans toute l'Afrique de l'Ouest.</p>
+      <div class="office-zone-list">
+        <span class="oz-chip">🇳🇪 Niger</span>
+        <span class="oz-chip">🇲🇦 Maroc</span>
+        <span class="oz-chip">🇧🇫 Burkina Faso</span>
+        <span class="oz-chip">🇲🇱 Mali</span>
+        <span class="oz-chip">🇧🇯 Bénin</span>
+        <span class="oz-chip">🇸🇳 Sénégal</span>
+        <span class="oz-chip">🌍 Toute l'Afrique de l'Ouest</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="footer-brand-name">ĀDS <em>TECH</em></div><p>Solutions Numériques &amp; Intelligence Artificielle — Niamey, Niger — Afrique de l'Ouest</p></div>
+    <div class="footer-col"><div class="footer-col-title">Navigation</div><a href="index.html">Accueil</a><a href="produits.html">Produits</a><a href="services.html">Services</a><a href="apropos.html">À propos</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><div class="footer-col-title">Produits</div><a href="produits.html">ADSClass</a><a href="produits.html">Hotel-PMS</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="tel:+212627616719">+212 627 616 719</a><a href="mailto:contact@adstech.com">contact@adstech.com</a><a>Niamey, Niger</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 ADS TECH</span><span>Abdourahmane DJIBO SALOU — PDG</span></div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+// Project type chips
+document.querySelectorAll('.pchip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.pchip').forEach(c => c.classList.remove('selected'));
+    chip.classList.add('selected');
+  });
+});
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('formView').style.display = 'none';
+  const s = document.getElementById('formSuccess');
+  s.style.display = 'block';
+  s.scrollIntoView({ behavior:'smooth', block:'center' });
+}
+// FAQ accordion
+function toggleFaq(btn) {
+  const body = btn.nextElementSibling;
+  const chev = btn.querySelector('.faq-chevron');
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.faq-body').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.faq-chevron').forEach(c => { c.style.transform = ''; });
+  if (!isOpen) {
+    body.classList.add('open');
+    chev.style.transform = 'rotate(180deg)';
+  }
+}
+</script>
+</body>
+</html>

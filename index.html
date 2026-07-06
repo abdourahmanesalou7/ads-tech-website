@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADS TECH — Intelligence Artificielle & Solutions Numériques</title>
+<meta name="description" content="ADS TECH conçoit des plateformes intelligentes pour digitaliser l'éducation et l'hôtellerie en Afrique de l'Ouest.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ══ HERO ════════════════════════════════════════════════════════════ */
+.hero {
+  min-height: 100svh;
+  background: var(--navy);
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden; padding: 0 40px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 65% 40%, rgba(14,123,114,.13) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 60% at 10% 90%, rgba(27,79,216,.09) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 50% at 90% 15%, rgba(201,168,76,.06) 0%, transparent 50%);
+}
+.hero-grid-lines {
+  position: absolute; inset: 0; opacity:.028;
+  background-image:
+    linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+.hero-inner {
+  max-width: 1320px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1.05fr .95fr;
+  gap: 60px; align-items: center; padding-top: 70px;
+}
+/* left */
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 32px;
+}
+.hero-eyebrow-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%,100% { box-shadow: 0 0 0 0 rgba(201,168,76,.5); }
+  50%      { box-shadow: 0 0 0 7px rgba(201,168,76,0); }
+}
+.hero-title {
+  font-family: var(--serif); font-size: clamp(56px, 6.2vw, 96px);
+  font-weight: 300; line-height: 1.02; color: var(--cream);
+  margin-bottom: 28px; letter-spacing: -.5px;
+}
+.hero-title em { font-style: italic; color: var(--gold); }
+.hero-title .line-accent {
+  display: block; position: relative; width: fit-content;
+}
+.hero-title .line-accent::after {
+  content: ''; position: absolute; bottom: 4px; left: 0; right: 0;
+  height: 2px; background: linear-gradient(90deg, var(--gold), transparent);
+  opacity: .5;
+}
+.hero-desc {
+  font-size: 15.5px; line-height: 1.82; color: rgba(255,255,255,.52);
+  max-width: 500px; margin-bottom: 48px;
+}
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.hero-actions .btn-text {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .15em;
+  color: rgba(255,255,255,.4); text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px; transition: color .2s;
+}
+.hero-actions .btn-text:hover { color: var(--gold); }
+/* right */
+.hero-visual { position: relative; }
+.hero-card-main {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 24px; padding: 0;
+  backdrop-filter: blur(20px);
+  overflow: hidden; box-shadow: var(--shadow-xl);
+}
+.hcm-top {
+  padding: 18px 24px;
+  background: rgba(255,255,255,.035);
+  border-bottom: 1px solid rgba(255,255,255,.07);
+  display: flex; align-items: center; gap: 8px;
+}
+.hcm-dot { width: 10px; height: 10px; border-radius: 50%; }
+.hcm-title { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,.3); margin-left: 10px; }
+.hcm-body { padding: 28px; }
+.metric-row {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
+  background: rgba(255,255,255,.06); border-radius: 14px; overflow: hidden;
+  margin-bottom: 24px;
+}
+.metric-cell {
+  background: rgba(255,255,255,.03); padding: 22px 16px; text-align: center;
+}
+.metric-num {
+  font-family: var(--serif); font-size: 34px; font-weight: 400;
+  color: var(--gold); line-height: 1;
+}
+.metric-lbl {
+  font-size: 10px; color: rgba(255,255,255,.3);
+  text-transform: uppercase; letter-spacing: .1em; margin-top: 6px;
+}
+.activity-list { display: flex; flex-direction: column; gap: 10px; }
+.activity-item {
+  display: flex; align-items: center; gap: 14px;
+  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px; padding: 14px 18px;
+  transition: background .2s;
+}
+.activity-item:hover { background: rgba(255,255,255,.07); }
+.ai-icon {
+  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 16px;
+}
+.ai-icon.teal { background: rgba(14,123,114,.2); border: 1px solid rgba(14,123,114,.3); }
+.ai-icon.gold { background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.25); }
+.ai-info { flex: 1; min-width: 0; }
+.ai-name { font-size: 13px; color: var(--cream); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ai-sub  { font-size: 11px; color: rgba(255,255,255,.3); margin-top: 2px; }
+.ai-badge {
+  font-family: var(--mono); font-size: 9.5px; padding: 4px 10px;
+  border-radius: 100px; white-space: nowrap;
+}
+.ai-badge.green { background: rgba(16,185,129,.15); color: #34d399; border: 1px solid rgba(16,185,129,.25); }
+.ai-badge.gold  { background: rgba(201,168,76,.15);  color: var(--gold); border: 1px solid rgba(201,168,76,.25); }
+/* floating cards */
+.hero-card-float {
+  position: absolute; background: rgba(8,15,26,.88);
+  border: 1px solid rgba(255,255,255,.1); border-radius: 16px;
+  padding: 16px 20px; backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+.hero-card-float.f1 { top: -28px; right: -20px; }
+.hero-card-float.f2 { bottom: -24px; left: -24px; }
+.hcf-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; color: rgba(255,255,255,.3); text-transform: uppercase; margin-bottom: 6px; }
+.hcf-val { font-family: var(--serif); font-size: 26px; color: var(--gold); }
+.hcf-sub { font-size: 11px; color: rgba(255,255,255,.35); margin-top: 3px; }
+/* scroll indicator */
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .15em;
+  color: rgba(255,255,255,.25); text-transform: uppercase;
+  animation: fadeIn 1s 1.2s both;
+}
+.hero-scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+  animation: scroll-line 2s ease-in-out infinite;
+}
+@keyframes scroll-line {
+  0%,100% { opacity: .3; transform: scaleY(1); }
+  50%      { opacity: 1;  transform: scaleY(.6); }
+}
+
+/* ══ MARQUEE ═════════════════════════════════════════════════════════ */
+.marquee-section {
+  background: rgba(8,15,26,.95); border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border); overflow: hidden; padding: 20px 0;
+}
+.marquee-track {
+  display: flex; gap: 0; width: max-content;
+  animation: marquee 28s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-item {
+  display: flex; align-items: center; gap: 12px; padding: 0 40px;
+  font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,.3);
+  letter-spacing: .1em; white-space: nowrap; border-right: 1px solid var(--border);
+}
+.marquee-item em { font-style: normal; color: var(--gold); }
+.marquee-sep { color: rgba(255,255,255,.1); }
+
+/* ══ PRODUITS ════════════════════════════════════════════════════════ */
+.products-section { background: var(--offwhite); padding: 140px 40px; }
+.products-wrap { max-width: 1320px; margin: 0 auto; }
+.products-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: flex-end; margin-bottom: 80px; }
+.products-header-right { display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end; gap: 20px; }
+.products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-lg); }
+.pcard {
+  position: relative; overflow: hidden;
+  background: var(--navy-2); padding: 64px 56px 56px;
+  cursor: pointer; transition: background .35s;
+  display: flex; flex-direction: column;
+}
+.pcard:hover { background: #0f1f38; }
+.pcard-accent { position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+.pcard-accent.t { background: linear-gradient(90deg, var(--teal), transparent 70%); }
+.pcard-accent.g { background: linear-gradient(90deg, var(--gold), transparent 70%); }
+.pcard-num {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .2em;
+  color: rgba(255,255,255,.2); text-transform: uppercase; margin-bottom: 36px;
+}
+.pcard-icon {
+  width: 60px; height: 60px; border-radius: 16px; margin-bottom: 28px;
+  display: flex; align-items: center; justify-content: center; font-size: 26px;
+}
+.pcard-icon.teal-i { background: rgba(14,123,114,.18); border: 1px solid rgba(14,123,114,.28); }
+.pcard-icon.gold-i { background: rgba(201,168,76,.13); border: 1px solid rgba(201,168,76,.22); }
+.pcard-name { font-family: var(--serif); font-size: 38px; color: var(--cream); font-weight: 300; margin-bottom: 6px; }
+.pcard-cat  { font-family: var(--mono); font-size: 10px; letter-spacing: .18em; color: var(--gold); text-transform: uppercase; margin-bottom: 22px; }
+.pcard-desc { font-size: 14px; color: rgba(255,255,255,.45); line-height: 1.82; margin-bottom: 36px; flex: 1; }
+.pcard-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 44px; }
+.pcard-feat {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 13px; color: rgba(255,255,255,.5);
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.pcard-feat::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+.pcard-feat.gold-feat::before { background: var(--gold); }
+.pcard-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .15em;
+  color: var(--gold); text-transform: uppercase; text-decoration: none;
+  border-bottom: 1px solid rgba(201,168,76,.3); padding-bottom: 4px;
+  width: fit-content; transition: gap .25s, border-color .25s;
+}
+.pcard:hover .pcard-cta { gap: 16px; border-color: var(--gold); }
+
+/* ══ SERVICES STRIP ══════════════════════════════════════════════════ */
+.services-section { background: var(--navy); padding: 130px 40px; }
+.services-wrap { max-width: 1320px; margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 72px; background: rgba(255,255,255,.05); border-radius: var(--r-xl); overflow: hidden; }
+.svc-card {
+  background: rgba(255,255,255,.03); padding: 48px 42px;
+  transition: background .25s;
+  position: relative; overflow: hidden;
+}
+.svc-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,.4), transparent);
+  opacity: 0; transition: opacity .3s;
+}
+.svc-card:hover { background: rgba(255,255,255,.07); }
+.svc-card:hover::before { opacity: 1; }
+.svc-num { font-family: var(--mono); font-size: 10px; letter-spacing: .15em; color: rgba(255,255,255,.18); margin-bottom: 24px; }
+.svc-icon { font-size: 30px; margin-bottom: 22px; }
+.svc-name { font-family: var(--serif); font-size: 24px; color: var(--cream); margin-bottom: 14px; }
+.svc-desc { font-size: 13px; color: rgba(255,255,255,.38); line-height: 1.85; }
+
+/* ══ ABOUT BAND ══════════════════════════════════════════════════════ */
+.about-section { background: var(--cream); padding: 130px 40px; }
+.about-wrap { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: .9fr 1.1fr; gap: 100px; align-items: center; }
+.about-figures { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; border-radius: var(--r-xl); overflow: hidden; }
+.figure-cell {
+  background: var(--navy); padding: 44px 36px; text-align: center;
+  transition: background .25s;
+}
+.figure-cell:hover { background: var(--navy-3); }
+.figure-num { font-family: var(--serif); font-size: 52px; font-weight: 300; color: var(--gold); line-height: 1; }
+.figure-lbl { font-size: 12px; color: rgba(255,255,255,.38); margin-top: 8px; line-height: 1.5; }
+.about-content .s-label { color: var(--gold); }
+.about-content .s-label::before { background: var(--gold); }
+.about-heading { font-family: var(--serif); font-size: clamp(36px,4vw,56px); color: var(--navy); font-weight: 300; line-height: 1.07; margin-bottom: 22px; }
+.about-heading em { font-style: italic; color: var(--gold); }
+.about-body { font-size: 14.5px; color: #4a5568; line-height: 1.88; margin-bottom: 16px; }
+.about-body + .about-body { color: rgba(74,85,104,.7); }
+.about-cta { margin-top: 40px; display: flex; gap: 14px; }
+.about-quote {
+  margin-top: 40px; padding: 28px 32px;
+  border-left: 2px solid var(--gold); background: rgba(201,168,76,.06);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+}
+.about-quote p { font-family: var(--serif); font-size: 19px; color: var(--navy); font-style: italic; line-height: 1.6; }
+.about-quote cite { font-size: 11px; color: var(--gold); font-family: var(--mono); letter-spacing: .1em; margin-top: 10px; display: block; font-style: normal; }
+
+/* ══ CTA BAND ════════════════════════════════════════════════════════ */
+.cta-section {
+  padding: 120px 40px;
+  background: linear-gradient(135deg, #0B1828 0%, #0E2240 40%, #0D1E38 100%);
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(201,168,76,.08) 0%, transparent 65%);
+}
+.cta-inner { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
+.cta-heading { font-family: var(--serif); font-size: clamp(40px,5vw,68px); font-weight: 300; color: var(--cream); line-height: 1.07; margin-bottom: 22px; }
+.cta-heading em { font-style: italic; color: var(--gold); }
+.cta-sub { font-size: 15px; color: rgba(255,255,255,.45); line-height: 1.8; margin-bottom: 52px; max-width: 540px; margin-inline: auto; }
+.cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ══ RESPONSIVE ══════════════════════════════════════════════════════ */
+@media(max-width:1080px){
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .products-header { grid-template-columns: 1fr; }
+  .products-header-right { align-items: flex-start; }
+  .products-grid { grid-template-columns: 1fr; }
+  .about-wrap { grid-template-columns: 1fr; gap: 60px; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:640px){
+  .services-grid { grid-template-columns: 1fr; }
+  .hero-title { font-size: 48px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">ĀDS <em>TECH</em></a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Accueil</a>
+      <a href="produits.html">Produits</a>
+      <a href="services.html">Services</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="contact.html" class="btn btn-outline-light btn-sm">Nous contacter</a>
+      <a href="produits.html" class="btn btn-gold btn-sm">Voir nos produits →</a>
+    </div>
+    <button class="nav-burger" onclick="toggleMenu()">☰</button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html">Accueil</a>
+    <a href="produits.html">Produits</a>
+    <a href="services.html">Services</a>
+    <a href="apropos.html">À propos</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <div class="anim-up">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-dot"></div>
+        Solutions Numériques & Intelligence Artificielle
+      </div>
+      <h1 class="hero-title">
+        L'intelligence<br>
+        <em>artificielle</em><br>
+        <span class="line-accent">au service</span><br>
+        de l'Afrique
+      </h1>
+      <p class="hero-desc">ADS TECH conçoit des plateformes numériques intelligentes pour digitaliser l'éducation et l'hôtellerie en Afrique de l'Ouest — des solutions souveraines bâties pour durer.</p>
+      <div class="hero-actions">
+        <a href="produits.html" class="btn btn-gold btn-lg">Découvrir nos produits →</a>
+        <a href="contact.html" class="btn-text">
+          <span style="width:32px;height:1px;background:rgba(255,255,255,.2)"></span>
+          Nous contacter
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual anim-up-2">
+      <div class="hero-card-float f1">
+        <div class="hcf-label">Disponibilité</div>
+        <div class="hcf-val">99.5<span style="font-size:16px">%</span></div>
+        <div class="hcf-sub">Uptime garanti SLA</div>
+      </div>
+      <div class="hero-card-main">
+        <div class="hcm-top">
+          <div class="hcm-dot" style="background:#ef4444"></div>
+          <div class="hcm-dot" style="background:#f59e0b"></div>
+          <div class="hcm-dot" style="background:#10b981"></div>
+          <span class="hcm-title">ADSClass — Tableau de bord</span>
+        </div>
+        <div class="hcm-body">
+          <div class="metric-row">
+            <div class="metric-cell">
+              <div class="metric-num" data-count="342" data-suffix="">—</div>
+              <div class="metric-lbl">Étudiants actifs</div>
+            </div>
+            <div class="metric-cell">
+              <div class="metric-num" data-count="18" data-suffix="">—</div>
+              <div class="metric-lbl">Cours indexés IA</div>
+            </div>
+            <div class="metric-cell">
+              <div class="metric-num" data-count="247" data-suffix="">—</div>
+              <div class="metric-lbl">Requêtes IA / jour</div>
+            </div>
+          </div>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="ai-icon teal">🎓</div>
+              <div class="ai-info">
+                <div class="ai-name">Chatbot IA pédagogique</div>
+                <div class="ai-sub">Dernière réponse : il y a 3 min</div>
+              </div>
+              <div class="ai-badge green">En ligne</div>
+            </div>
+            <div class="activity-item">
+              <div class="ai-icon gold">💰</div>
+              <div class="ai-info">
+                <div class="ai-name">Paiements traités</div>
+                <div class="ai-sub">Module finance synchronisé</div>
+              </div>
+              <div class="ai-badge gold">Sync</div>
+            </div>
+            <div class="activity-item">
+              <div class="ai-icon teal">📊</div>
+              <div class="ai-info">
+                <div class="ai-name">Rapport mensuel généré</div>
+                <div class="ai-sub">Export PDF disponible</div>
+              </div>
+              <div class="ai-badge green">Prêt</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card-float f2">
+        <div class="hcf-label">Produits SaaS</div>
+        <div class="hcf-val">2+</div>
+        <div class="hcf-sub">Plateformes actives</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Découvrir</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item"><em>ADSClass</em><span class="marquee-sep">·</span>Plateforme Éducative Intelligente</div>
+    <div class="marquee-item"><em>Hotel-PMS</em><span class="marquee-sep">·</span>Gestion Hôtelière Intelligente</div>
+    <div class="marquee-item"><em>Intelligence Artificielle</em><span class="marquee-sep">·</span>Architecture RAG Souveraine</div>
+    <div class="marquee-item"><em>ADS TECH</em><span class="marquee-sep">·</span>Niamey, Niger</div>
+    <div class="marquee-item"><em>Afrique de l'Ouest</em><span class="marquee-sep">·</span>Solutions Numériques Locales</div>
+    <div class="marquee-item"><em>SaaS Multi-tenant</em><span class="marquee-sep">·</span>Scalabilité Nationale</div>
+    <div class="marquee-item"><em>ADSClass</em><span class="marquee-sep">·</span>Plateforme Éducative Intelligente</div>
+    <div class="marquee-item"><em>Hotel-PMS</em><span class="marquee-sep">·</span>Gestion Hôtelière Intelligente</div>
+    <div class="marquee-item"><em>Intelligence Artificielle</em><span class="marquee-sep">·</span>Architecture RAG Souveraine</div>
+    <div class="marquee-item"><em>ADS TECH</em><span class="marquee-sep">·</span>Niamey, Niger</div>
+    <div class="marquee-item"><em>Afrique de l'Ouest</em><span class="marquee-sep">·</span>Solutions Numériques Locales</div>
+    <div class="marquee-item"><em>SaaS Multi-tenant</em><span class="marquee-sep">·</span>Scalabilité Nationale</div>
+  </div>
+</div>
+
+<!-- PRODUITS -->
+<section class="products-section">
+  <div class="products-wrap">
+    <div class="products-header">
+      <div>
+        <div class="s-label">Nos Produits</div>
+        <h2 style="font-family:var(--serif);font-size:clamp(40px,4.5vw,64px);font-weight:300;color:var(--navy);line-height:1.07">Deux plateformes,<br><em style="font-style:italic;color:var(--gold)">une vision</em></h2>
+      </div>
+      <div class="products-header-right">
+        <p style="font-size:14.5px;color:var(--slate);line-height:1.85;max-width:380px;text-align:right">Des solutions SaaS intelligentes conçues pour digitaliser les secteurs stratégiques de l'Afrique de l'Ouest.</p>
+        <a href="produits.html" class="btn btn-outline-dark btn-sm">Voir tous les produits →</a>
+      </div>
+    </div>
+    <div class="products-grid">
+      <!-- ADSClass -->
+      <div class="pcard">
+        <div class="pcard-accent t"></div>
+        <div class="pcard-num">01 / Éducation</div>
+        <div class="pcard-icon teal-i">🎓</div>
+        <div class="pcard-name">ADSClass</div>
+        <div class="pcard-cat">ERP Scolaire · EdTech SaaS</div>
+        <p class="pcard-desc">Plateforme intelligente qui centralise la gestion académique, administrative et financière des établissements scolaires. Un chatbot IA pédagogique répond aux étudiants 24h/24 à partir des vrais cours de l'établissement.</p>
+        <div class="pcard-features">
+          <div class="pcard-feat">Gestion multi-établissements centralisée</div>
+          <div class="pcard-feat">Chatbot IA pédagogique RAG souverain</div>
+          <div class="pcard-feat">Finance & billing entièrement automatisé</div>
+          <div class="pcard-feat">Tableaux de bord analytiques en temps réel</div>
+          <div class="pcard-feat">Carte étudiante numérique</div>
+        </div>
+        <a href="produits.html" class="pcard-cta">Explorer ADSClass <span>→</span></a>
+      </div>
+      <!-- Hotel-PMS -->
+      <div class="pcard">
+        <div class="pcard-accent g"></div>
+        <div class="pcard-num">02 / Hôtellerie</div>
+        <div class="pcard-icon gold-i">🏨</div>
+        <div class="pcard-name">Hotel-PMS</div>
+        <div class="pcard-cat">Property Management · HotelTech SaaS</div>
+        <p class="pcard-desc">Système de gestion hôtelière intelligent combinant un ERP puissant, un site de réservation moderne et une assistance IA client disponible autour du l'horloge — pour une expérience hôtelière d'exception.</p>
+        <div class="pcard-features">
+          <div class="pcard-feat gold-feat">ERP hôtelier sur mesure</div>
+          <div class="pcard-feat gold-feat">Moteur de réservation en ligne</div>
+          <div class="pcard-feat gold-feat">Paiement en ligne multi-canal sécurisé</div>
+          <div class="pcard-feat gold-feat">Assistant IA client 24h/24</div>
+          <div class="pcard-feat gold-feat">Dashboard multi-hôtel & analytiques</div>
+        </div>
+        <a href="produits.html" class="pcard-cta">Explorer Hotel-PMS <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section">
+  <div class="services-wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-end;margin-bottom:0">
+      <div>
+        <div class="s-label" style="color:var(--gold)"><span style="width:28px;height:1px;background:var(--gold);display:inline-block"></span>Notre Expertise</div>
+        <h2 style="font-family:var(--serif);font-size:clamp(38px,4vw,60px);font-weight:300;color:var(--cream);line-height:1.06">Services<br><em style="font-style:italic;color:var(--gold)">&amp; Savoir-faire</em></h2>
+      </div>
+      <div style="text-align:right;padding-bottom:6px">
+        <p style="font-size:14px;color:rgba(255,255,255,.38);line-height:1.85;max-width:360px;margin-left:auto">De la conception à la mise en production, nous maîtrisons l'ensemble du cycle de vie des solutions numériques.</p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card"><div class="svc-num">01</div><div class="svc-icon">🤖</div><div class="svc-name">Intelligence Artificielle</div><p class="svc-desc">Chatbots RAG, analyse prédictive, NLP multilingue — IA souveraine intégrée dans vos produits et processus métier.</p></div>
+      <div class="svc-card"><div class="svc-num">02</div><div class="svc-icon">⚙️</div><div class="svc-name">Développement Logiciel</div><p class="svc-desc">Applications web, mobiles, ERP et plateformes SaaS — architecture moderne, code propre, livraisons fiables.</p></div>
+      <div class="svc-card"><div class="svc-num">03</div><div class="svc-icon">☁️</div><div class="svc-name">Cloud & Infrastructure</div><p class="svc-desc">Hébergement sécurisé, CI/CD, monitoring 24/7 — infrastructure pensée pour la haute disponibilité.</p></div>
+      <div class="svc-card"><div class="svc-num">04</div><div class="svc-icon">🔐</div><div class="svc-name">Cybersécurité</div><p class="svc-desc">Audit de sécurité, architecture défensive, chiffrement des données — sécurité intégrée par design dès le départ.</p></div>
+      <div class="svc-card"><div class="svc-num">05</div><div class="svc-icon">📊</div><div class="svc-name">Data & Analytics</div><p class="svc-desc">Tableaux de bord en temps réel, rapports automatisés — transformez vos données en décisions éclairées.</p></div>
+      <div class="svc-card"><div class="svc-num">06</div><div class="svc-icon">🎓</div><div class="svc-name">Formation Numérique</div><p class="svc-desc">Bootcamps, ateliers, mentorat — montée en compétences des équipes locales en développement et IA.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="about-wrap">
+    <div class="about-figures">
+      <div class="figure-cell">
+        <div class="figure-num" data-count="2" data-suffix="+">—</div>
+        <div class="figure-lbl">Produits SaaS<br>opérationnels</div>
+      </div>
+      <div class="figure-cell">
+        <div class="figure-num" data-count="5" data-suffix="+">—</div>
+        <div class="figure-lbl">Pays cibles<br>Afrique de l'Ouest</div>
+      </div>
+      <div class="figure-cell">
+        <div class="figure-num" data-count="100" data-suffix="%">—</div>
+        <div class="figure-lbl">Solutions<br>souveraines locales</div>
+      </div>
+      <div class="figure-cell">
+        <div class="figure-num" style="font-size:36px;color:var(--gold)">IA</div>
+        <div class="figure-lbl">Architecture RAG<br>intégrée</div>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="s-label">Notre Mission</div>
+      <h2 class="about-heading">Technologie conçue<br><em>pour l'Afrique</em></h2>
+      <p class="about-body">ADS TECH est une entreprise technologique nigérienne fondée sur une conviction profonde : la technologie et l'intelligence artificielle sont les leviers les plus puissants du développement des marchés émergents.</p>
+      <p class="about-body">Fondée par Abdourahmane DJIBO SALOU, ingénieur en Intelligence Artificielle, l'entreprise positionne l'innovation numérique au service concret des secteurs qui structurent la société africaine — l'éducation, l'hôtellerie, les services.</p>
+      <div class="about-quote">
+        <p>"La souveraineté numérique commence par des solutions pensées localement, bâties par des talents locaux, pour des réalités locales."</p>
+        <cite>— Abdourahmane DJIBO SALOU, Promoteur & PDG</cite>
+      </div>
+      <div class="about-cta">
+        <a href="apropos.html" class="btn btn-outline-dark">Notre histoire →</a>
+        <a href="contact.html" class="btn btn-gold">Travailler avec nous</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2 class="cta-heading">Prêt à <em>digitaliser</em><br>votre activité ?</h2>
+    <p class="cta-sub">Discutons de votre projet. Notre équipe est disponible pour une consultation gratuite et une démonstration personnalisée de nos solutions.</p>
+    <div class="cta-actions">
+      <a href="contact.html" class="btn btn-gold btn-lg">Démarrer un projet →</a>
+      <a href="produits.html" class="btn btn-outline-light btn-lg">Voir nos produits</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">ĀDS <em>TECH</em></div>
+      <p>Solutions Numériques &amp; Intelligence Artificielle — Niamey, Niger — Afrique de l'Ouest</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Navigation</div>
+      <a href="index.html">Accueil</a>
+      <a href="produits.html">Produits</a>
+      <a href="services.html">Services</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Produits</div>
+      <a href="produits.html">ADSClass</a>
+      <a href="produits.html">Hotel-PMS</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Contact</div>
+      <a href="tel:+212627616719">+212 627 616 719</a>
+      <a href="mailto:contact@adstech.com">contact@adstech.com</a>
+      <a>Niamey, Niger</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ADS TECH — Tous droits réservés</span>
+    <span>Abdourahmane DJIBO SALOU — Promoteur &amp; PDG</span>
+  </div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

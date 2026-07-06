@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produits — ADS TECH</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── PRODUCT HERO TABS ──────────────────────────────────────────────── */
+.prod-tabs { display:flex; gap:0; border-bottom:1px solid var(--border); max-width:1320px; margin:0 auto; padding:0 40px; margin-top:40px; }
+.prod-tab { font-family:var(--mono); font-size:11px; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.35); padding:14px 28px; cursor:pointer; border-bottom:2px solid transparent; transition:color .2s,border-color .2s; }
+.prod-tab.active { color:var(--gold); border-color:var(--gold); }
+.prod-tab:hover { color:rgba(255,255,255,.65); }
+
+/* ── PRODUCT DETAIL ─────────────────────────────────────────────────── */
+.prod-detail { padding:100px 40px; }
+.prod-detail.dark { background:var(--navy); }
+.prod-detail.light { background:var(--offwhite); }
+.pd-inner { max-width:1320px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:center; }
+.pd-inner.rev { direction:rtl; }
+.pd-inner.rev > * { direction:ltr; }
+
+.pd-badge {
+  display:inline-flex; align-items:center; gap:8px; margin-bottom:24px;
+  font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase;
+  padding:6px 16px; border-radius:100px;
+}
+.pd-badge.teal { color:var(--teal-lt); background:rgba(14,123,114,.15); border:1px solid rgba(14,123,114,.25); }
+.pd-badge.gold { color:var(--gold); background:rgba(201,168,76,.12); border:1px solid rgba(201,168,76,.22); }
+
+.pd-title { font-family:var(--serif); font-size:clamp(44px,5vw,72px); font-weight:300; line-height:1.04; margin-bottom:20px; }
+.pd-title.light-t { color:var(--cream); }
+.pd-title.light-t em { font-style:italic; color:var(--gold); }
+.pd-title.dark-t { color:var(--navy); }
+.pd-title.dark-t em { font-style:italic; color:var(--gold); }
+
+.pd-desc { font-size:15px; line-height:1.88; margin-bottom:44px; }
+.pd-desc.light-d { color:rgba(255,255,255,.48); }
+.pd-desc.dark-d { color:var(--slate); }
+
+/* feature items */
+.pd-features { display:flex; flex-direction:column; gap:0; margin-bottom:48px; }
+.pd-feat {
+  display:flex; align-items:flex-start; gap:18px; padding:18px 0;
+  border-bottom:1px solid;
+}
+.pd-feat.lbdr { border-color:rgba(255,255,255,.06); }
+.pd-feat.dbdr { border-color:rgba(0,0,0,.07); }
+.pd-feat-icon { width:40px; height:40px; border-radius:10px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:18px; }
+.pd-feat-icon.t { background:rgba(14,123,114,.15); border:1px solid rgba(14,123,114,.22); }
+.pd-feat-icon.g { background:rgba(201,168,76,.12); border:1px solid rgba(201,168,76,.2); }
+.pd-feat-name { font-size:14px; font-weight:500; margin-bottom:4px; }
+.pd-feat-name.lc { color:var(--cream); }
+.pd-feat-name.dc { color:var(--navy); }
+.pd-feat-desc { font-size:12.5px; line-height:1.7; }
+.pd-feat-desc.ld { color:rgba(255,255,255,.35); }
+.pd-feat-desc.dd { color:var(--slate); }
+.pd-actions { display:flex; gap:14px; flex-wrap:wrap; }
+
+/* visual mockup */
+.pd-visual { position:relative; }
+.mockup {
+  border-radius:22px; overflow:hidden;
+  box-shadow:var(--shadow-xl);
+}
+.mockup.dark-m { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); }
+.mockup.light-m { background:#fff; border:1px solid rgba(0,0,0,.08); box-shadow:0 32px 100px rgba(0,0,0,.18); }
+.mock-bar {
+  padding:16px 22px; display:flex; align-items:center; gap:8px;
+}
+.mock-bar.dark-bar { background:rgba(255,255,255,.04); border-bottom:1px solid rgba(255,255,255,.07); }
+.mock-bar.light-bar { background:var(--cream); border-bottom:1px solid rgba(0,0,0,.06); }
+.mock-dot { width:10px; height:10px; border-radius:50%; }
+.mock-label { font-family:var(--mono); font-size:11px; margin-left:8px; }
+.mock-label.dl { color:rgba(255,255,255,.3); }
+.mock-label.ll { color:rgba(0,0,0,.35); }
+.mock-body { padding:28px; display:flex; flex-direction:column; gap:10px; }
+
+/* stat strip */
+.stat-strip { display:grid; gap:1px; border-radius:14px; overflow:hidden; margin-bottom:12px; }
+.stat-strip.dark-s { background:rgba(255,255,255,.08); }
+.stat-strip.light-s { background:rgba(0,0,0,.07); }
+.stat-c { padding:22px 18px; text-align:center; }
+.stat-c.dk { background:rgba(255,255,255,.04); }
+.stat-c.lk { background:#fff; }
+.stat-c-num { font-family:var(--serif); font-size:28px; color:var(--gold); line-height:1; }
+.stat-c-lbl { font-size:10px; text-transform:uppercase; letter-spacing:.08em; margin-top:5px; }
+.stat-c-lbl.dl { color:rgba(255,255,255,.3); }
+.stat-c-lbl.ll { color:var(--slate); }
+
+/* row items */
+.row-item { display:flex; align-items:center; gap:14px; border-radius:12px; padding:14px 18px; }
+.row-item.dk { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.07); }
+.row-item.lk { background:var(--cream); border:1px solid rgba(0,0,0,.07); }
+.row-icon { width:36px; height:36px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+.row-icon.ti { background:rgba(14,123,114,.18); border:1px solid rgba(14,123,114,.28); }
+.row-icon.gi { background:rgba(201,168,76,.15); border:1px solid rgba(201,168,76,.25); }
+.row-name { font-size:13px; font-weight:500; }
+.row-name.dl { color:var(--cream); }
+.row-name.ll { color:var(--navy); }
+.row-sub { font-size:11px; margin-top:2px; }
+.row-sub.dl { color:rgba(255,255,255,.3); }
+.row-sub.ll { color:var(--slate); }
+.row-badge { font-family:var(--mono); font-size:9.5px; padding:4px 10px; border-radius:100px; margin-left:auto; white-space:nowrap; }
+.rb-green { background:rgba(16,185,129,.15); color:#34d399; border:1px solid rgba(16,185,129,.25); }
+.rb-gold  { background:rgba(201,168,76,.15); color:var(--gold); border:1px solid rgba(201,168,76,.25); }
+.rb-teal  { background:rgba(14,123,114,.15); color:var(--teal-lt); border:1px solid rgba(14,123,114,.25); }
+
+/* ── VALUE PROPS ────────────────────────────────────────────────────── */
+.value-section { padding:120px 40px; background:var(--cream); }
+.value-inner { max-width:1320px; margin:0 auto; }
+.value-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:72px; border-radius:var(--r-xl); overflow:hidden; background:rgba(0,0,0,.07); }
+.val-cell { background:var(--offwhite); padding:52px 44px; transition:background .25s; }
+.val-cell:hover { background:#fff; }
+.val-cell-num { font-family:var(--mono); font-size:10px; letter-spacing:.18em; color:var(--gold); margin-bottom:22px; }
+.val-cell-icon { font-size:32px; margin-bottom:20px; }
+.val-cell-name { font-family:var(--serif); font-size:24px; color:var(--navy); margin-bottom:14px; }
+.val-cell-desc { font-size:13px; color:var(--slate); line-height:1.85; }
+
+/* ── VISION BAND ────────────────────────────────────────────────────── */
+.vision-band {
+  padding:130px 40px;
+  background: linear-gradient(160deg, var(--navy) 0%, #0d1e38 50%, #091525 100%);
+  position:relative; overflow:hidden; text-align:center;
+}
+.vision-band::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 50%, rgba(14,123,114,.11) 0%, transparent 65%);
+}
+.vision-inner { max-width:780px; margin:0 auto; position:relative; z-index:1; }
+.vision-label { font-family:var(--mono); font-size:10.5px; letter-spacing:.2em; color:var(--gold); text-transform:uppercase; margin-bottom:24px; display:flex; align-items:center; justify-content:center; gap:14px; }
+.vision-label::before,.vision-label::after { content:''; flex:1; max-width:60px; height:1px; background:var(--gold); opacity:.5; }
+.vision-quote { font-family:var(--serif); font-size:clamp(26px,3.5vw,44px); font-weight:300; color:var(--cream); line-height:1.38; font-style:italic; margin-bottom:36px; }
+.vision-quote em { font-style:normal; color:var(--gold); }
+.vision-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+@media(max-width:1080px){
+  .pd-inner { grid-template-columns:1fr; gap:60px; }
+  .pd-inner.rev { direction:ltr; }
+  .value-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:640px){
+  .value-grid { grid-template-columns:1fr; }
+  .prod-tabs { overflow-x:auto; padding:0 24px; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">ĀDS <em>TECH</em></a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a><a href="produits.html" class="active">Produits</a>
+      <a href="services.html">Services</a><a href="apropos.html">À propos</a><a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="contact.html" class="btn btn-outline-light btn-sm">Nous contacter</a>
+      <a href="contact.html" class="btn btn-gold btn-sm">Demander une démo →</a>
+    </div>
+    <button class="nav-burger" onclick="toggleMenu()">☰</button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html">Accueil</a><a href="produits.html">Produits</a>
+    <a href="services.html">Services</a><a href="apropos.html">À propos</a><a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Accueil</a><span>/</span>Produits</div>
+    <h1>Nos <em>Produits</em><br>SaaS Intelligents</h1>
+    <p>Deux plateformes de nouvelle génération — ADSClass pour l'éducation, Hotel-PMS pour l'hôtellerie — conçues pour transformer les secteurs clés de l'Afrique de l'Ouest.</p>
+  </div>
+  <div class="prod-tabs">
+    <div class="prod-tab active" onclick="scrollTo('#adsclass')">ADSClass — EdTech</div>
+    <div class="prod-tab" onclick="scrollTo('#hotelpms')">Hotel-PMS — HotelTech</div>
+  </div>
+</section>
+
+<!-- ADSCLASS -->
+<div id="adsclass"></div>
+<section class="prod-detail dark">
+  <div class="pd-inner">
+    <div>
+      <div class="pd-badge teal">ERP Scolaire · EdTech SaaS</div>
+      <h2 class="pd-title light-t">ADSClass<br><em>Éducation</em><br>réinventée</h2>
+      <p class="pd-desc light-d">ADSClass centralise et digitalise l'intégralité de la gestion scolaire — du suivi académique à la comptabilité — avec un moteur d'intelligence artificielle RAG souverain qui transforme chaque cours en une base de connaissances interactive.</p>
+      <div class="pd-features">
+        <div class="pd-feat lbdr">
+          <div class="pd-feat-icon t">🎓</div>
+          <div>
+            <div class="pd-feat-name lc">LMS Complet &amp; ERP Scolaire</div>
+            <div class="pd-feat-desc ld">Cours, emplois du temps, notes, absences, bulletins et inscriptions — tout dans une plateforme unifiée, accessible depuis tout terminal.</div>
+          </div>
+        </div>
+        <div class="pd-feat lbdr">
+          <div class="pd-feat-icon t">🤖</div>
+          <div>
+            <div class="pd-feat-name lc">Chatbot IA Pédagogique RAG</div>
+            <div class="pd-feat-desc ld">Un assistant intelligent qui répond exclusivement à partir des cours réels de l'établissement. Disponible 24h/24, en français, anglais et arabe.</div>
+          </div>
+        </div>
+        <div class="pd-feat lbdr">
+          <div class="pd-feat-icon t">💰</div>
+          <div>
+            <div class="pd-feat-name lc">Finance &amp; Billing Automatisé</div>
+            <div class="pd-feat-desc ld">Frais de scolarité, génération de reçus numériques, Mobile Money intégré — gestion financière complète sans intervention manuelle.</div>
+          </div>
+        </div>
+        <div class="pd-feat lbdr">
+          <div class="pd-feat-icon t">📊</div>
+          <div>
+            <div class="pd-feat-name lc">Analytics &amp; Tableaux de Bord</div>
+            <div class="pd-feat-desc ld">KPI académiques, taux de présence, performance par classe — pilotage stratégique basé sur les données en temps réel.</div>
+          </div>
+        </div>
+        <div class="pd-feat lbdr">
+          <div class="pd-feat-icon t">🏫</div>
+          <div>
+            <div class="pd-feat-name lc">Multi-tenant &amp; Scalable</div>
+            <div class="pd-feat-desc ld">Architecture multi-établissements isolée — chaque école opère dans son propre espace sécurisé. Scalabilité nationale sans limites.</div>
+          </div>
+        </div>
+      </div>
+      <div class="pd-actions">
+        <a href="contact.html" class="btn btn-gold">Demander une démonstration →</a>
+        <a href="contact.html" class="btn btn-outline-light">Télécharger la fiche produit</a>
+      </div>
+    </div>
+    <div class="pd-visual">
+      <div class="mockup dark-m">
+        <div class="mock-bar dark-bar">
+          <div class="mock-dot" style="background:#ef4444"></div>
+          <div class="mock-dot" style="background:#f59e0b"></div>
+          <div class="mock-dot" style="background:#10b981"></div>
+          <span class="mock-label dl">ADSClass — Tableau de bord Admin</span>
+        </div>
+        <div class="mock-body">
+          <div class="stat-strip dark-s" style="grid-template-columns:repeat(3,1fr)">
+            <div class="stat-c dk"><div class="stat-c-num">342</div><div class="stat-c-lbl dl">Étudiants</div></div>
+            <div class="stat-c dk"><div class="stat-c-num">18</div><div class="stat-c-lbl dl">Cours IA</div></div>
+            <div class="stat-c dk"><div class="stat-c-num">247</div><div class="stat-c-lbl dl">Requêtes / j</div></div>
+          </div>
+          <div class="row-item dk">
+            <div class="row-icon ti">🤖</div>
+            <div><div class="row-name dl">Chatbot IA — En ligne</div><div class="row-sub dl">Dernière interaction : 3 min</div></div>
+            <div class="row-badge rb-green">Actif</div>
+          </div>
+          <div class="row-item dk">
+            <div class="row-icon ti">📚</div>
+            <div><div class="row-name dl">18 cours PDF indexés</div><div class="row-sub dl">Base de connaissances IA</div></div>
+            <div class="row-badge rb-teal">Sync</div>
+          </div>
+          <div class="row-item dk">
+            <div class="row-icon gi">💰</div>
+            <div><div class="row-name dl">Paiements du mois</div><div class="row-sub dl">Module finance synchronisé</div></div>
+            <div class="row-badge rb-gold">Live</div>
+          </div>
+          <div class="row-item dk">
+            <div class="row-icon ti">📋</div>
+            <div><div class="row-name dl">Rapports générés</div><div class="row-sub dl">PDF disponibles au téléchargement</div></div>
+            <div class="row-badge rb-green">Prêt</div>
+          </div>
+          <div class="row-item dk">
+            <div class="row-icon ti">🎓</div>
+            <div><div class="row-name dl">Taux de présence global</div><div class="row-sub dl">Semestre en cours — toutes classes</div></div>
+            <div class="row-badge rb-teal">92%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOTEL-PMS -->
+<div id="hotelpms"></div>
+<section class="prod-detail light">
+  <div class="pd-inner rev">
+    <div>
+      <div class="pd-badge gold">Property Management · HotelTech SaaS</div>
+      <h2 class="pd-title dark-t">Hotel-PMS<br><em>Hôtellerie</em><br>intelligente</h2>
+      <p class="pd-desc dark-d">Hotel-PMS est un système de gestion hôtelière complet combinant un ERP puissant, un site de réservation moderne et une intelligence artificielle qui accompagne vos clients à chaque étape de leur séjour — de la réservation au check-out.</p>
+      <div class="pd-features">
+        <div class="pd-feat dbdr">
+          <div class="pd-feat-icon g">🏨</div>
+          <div>
+            <div class="pd-feat-name dc">ERP Hôtelier Complet</div>
+            <div class="pd-feat-desc dd">Gestion des chambres, réservations, clients, facturation et personnel — un système centralisé pour piloter l'ensemble de vos opérations hôtelières.</div>
+          </div>
+        </div>
+        <div class="pd-feat dbdr">
+          <div class="pd-feat-icon g">🌐</div>
+          <div>
+            <div class="pd-feat-name dc">Site de Réservation en Ligne</div>
+            <div class="pd-feat-desc dd">Interface moderne optimisée pour la conversion — moteur de réservation temps réel, disponibilité instantanée, tunnel d'achat fluide.</div>
+          </div>
+        </div>
+        <div class="pd-feat dbdr">
+          <div class="pd-feat-icon g">💳</div>
+          <div>
+            <div class="pd-feat-name dc">Paiement Multi-canal Sécurisé</div>
+            <div class="pd-feat-desc dd">Carte bancaire, Apple Pay, Google Pay et Mobile Money — tous les modes de paiement de votre marché intégrés nativement.</div>
+          </div>
+        </div>
+        <div class="pd-feat dbdr">
+          <div class="pd-feat-icon g">🤖</div>
+          <div>
+            <div class="pd-feat-name dc">Assistant IA Client 24h/24</div>
+            <div class="pd-feat-desc dd">Chatbot intelligent basé sur les informations réelles de votre hôtel — disponibilité, services, check-in, recommandations — toujours disponible.</div>
+          </div>
+        </div>
+        <div class="pd-feat dbdr">
+          <div class="pd-feat-icon g">📊</div>
+          <div>
+            <div class="pd-feat-name dc">Dashboard Analytique Multi-hôtel</div>
+            <div class="pd-feat-desc dd">Taux d'occupation, revenus, satisfaction client, tendances saisonnières — tous vos KPI hôteliers en temps réel sur un tableau de bord unifié.</div>
+          </div>
+        </div>
+      </div>
+      <div class="pd-actions">
+        <a href="contact.html" class="btn btn-gold">Demander une démonstration →</a>
+        <a href="contact.html" class="btn btn-outline-dark">Télécharger la fiche produit</a>
+      </div>
+    </div>
+    <div class="pd-visual">
+      <div class="mockup light-m">
+        <div class="mock-bar light-bar">
+          <div class="mock-dot" style="background:#ef4444"></div>
+          <div class="mock-dot" style="background:#f59e0b"></div>
+          <div class="mock-dot" style="background:#10b981"></div>
+          <span class="mock-label ll">Hotel-PMS — Tableau de bord Hôtel</span>
+        </div>
+        <div class="mock-body">
+          <div class="stat-strip light-s" style="grid-template-columns:repeat(4,1fr)">
+            <div class="stat-c lk"><div class="stat-c-num">87%</div><div class="stat-c-lbl ll">Occupation</div></div>
+            <div class="stat-c lk"><div class="stat-c-num">42</div><div class="stat-c-lbl ll">Chambres</div></div>
+            <div class="stat-c lk"><div class="stat-c-num">4.8★</div><div class="stat-c-lbl ll">Satisf.</div></div>
+            <div class="stat-c lk"><div class="stat-c-num">8</div><div class="stat-c-lbl ll">Check-in</div></div>
+          </div>
+          <div class="row-item lk">
+            <div class="row-icon gi">🛏️</div>
+            <div><div class="row-name ll">Chambres disponibles</div><div class="row-sub ll">6 chambres libres — 36 occupées</div></div>
+            <div class="row-badge rb-teal">Live</div>
+          </div>
+          <div class="row-item lk">
+            <div class="row-icon gi">📅</div>
+            <div><div class="row-name ll">Réservations du jour</div><div class="row-sub ll">8 check-in — 5 check-out prévus</div></div>
+            <div class="row-badge rb-green">Sync</div>
+          </div>
+          <div class="row-item lk">
+            <div class="row-icon gi">🤖</div>
+            <div><div class="row-name ll">Chatbot IA client</div><div class="row-sub ll">93 conversations — satisfaction 4.8/5</div></div>
+            <div class="row-badge rb-gold">RAG</div>
+          </div>
+          <div class="row-item lk">
+            <div class="row-icon gi">💳</div>
+            <div><div class="row-name ll">Revenus du mois</div><div class="row-sub ll">Paiements en ligne + Mobile Money</div></div>
+            <div class="row-badge rb-green">+18%</div>
+          </div>
+          <div class="row-item lk">
+            <div class="row-icon gi">📊</div>
+            <div><div class="row-name ll">Rapport mensuel</div><div class="row-sub ll">Analytiques générées automatiquement</div></div>
+            <div class="row-badge rb-teal">Prêt</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROPS -->
+<section class="value-section">
+  <div class="value-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-end;margin-bottom:0">
+      <div>
+        <div class="s-label">Ce qui nous distingue</div>
+        <h2 style="font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:300;color:var(--navy);line-height:1.07">Pourquoi choisir<br><em style="font-style:italic;color:var(--gold)">ADS TECH</em></h2>
+      </div>
+      <p style="font-size:14.5px;color:var(--slate);line-height:1.85;padding-bottom:6px">Nos produits ne sont pas de simples outils de gestion — ce sont des plateformes intelligentes conçues pour transformer durablement vos opérations.</p>
+    </div>
+    <div class="value-grid">
+      <div class="val-cell">
+        <div class="val-cell-num">01</div>
+        <div class="val-cell-icon">🏆</div>
+        <div class="val-cell-name">Souveraineté totale</div>
+        <p class="val-cell-desc">Vos données restent locales, votre IA est entraînée sur vos documents. Aucune dépendance à des plateformes étrangères — une indépendance numérique réelle.</p>
+      </div>
+      <div class="val-cell">
+        <div class="val-cell-num">02</div>
+        <div class="val-cell-icon">🤖</div>
+        <div class="val-cell-name">IA Contextualisée</div>
+        <p class="val-cell-desc">Notre moteur IA RAG répond à partir de vos propres contenus — pas de données génériques. Des réponses pertinentes, précises et alignées avec votre réalité.</p>
+      </div>
+      <div class="val-cell">
+        <div class="val-cell-num">03</div>
+        <div class="val-cell-icon">🌍</div>
+        <div class="val-cell-name">Conçu pour l'Afrique</div>
+        <p class="val-cell-desc">Mobile Money intégré, multilingue (FR/EN/AR), optimisé pour les connexions limitées — une solution pensée pour les réalités du marché africain.</p>
+      </div>
+      <div class="val-cell">
+        <div class="val-cell-num">04</div>
+        <div class="val-cell-icon">📈</div>
+        <div class="val-cell-name">Scalabilité nationale</div>
+        <p class="val-cell-desc">Architecture multi-tenant — d'un établissement à des centaines, la plateforme s'adapte sans contrainte. Votre croissance n'a pas de plafond technique.</p>
+      </div>
+      <div class="val-cell">
+        <div class="val-cell-num">05</div>
+        <div class="val-cell-icon">🛡️</div>
+        <div class="val-cell-name">Sécurité par design</div>
+        <p class="val-cell-desc">Chiffrement bout-en-bout, contrôle d'accès granulaire, audit trail complet — chaque donnée de vos utilisateurs est protégée selon les standards internationaux.</p>
+      </div>
+      <div class="val-cell">
+        <div class="val-cell-num">06</div>
+        <div class="val-cell-icon">🤝</div>
+        <div class="val-cell-name">Accompagnement continu</div>
+        <p class="val-cell-desc">Déploiement, formation, support et évolutions — nous sommes à vos côtés bien au-delà de la mise en production. Un partenariat de long terme.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION BAND -->
+<section class="vision-band">
+  <div class="vision-inner">
+    <div class="vision-label">Notre Vision Produit</div>
+    <p class="vision-quote">"Chaque établissement scolaire ou hôtelier mérite une solution numérique <em>à la hauteur de ses ambitions</em> — quelle que soit sa taille ou sa localisation."</p>
+    <div class="vision-actions">
+      <a href="contact.html" class="btn btn-gold btn-lg">Démarrer maintenant →</a>
+      <a href="services.html" class="btn btn-outline-light btn-lg">Nos services</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="footer-brand-name">ĀDS <em>TECH</em></div><p>Solutions Numériques &amp; Intelligence Artificielle — Niamey, Niger</p></div>
+    <div class="footer-col"><div class="footer-col-title">Navigation</div><a href="index.html">Accueil</a><a href="produits.html">Produits</a><a href="services.html">Services</a><a href="apropos.html">À propos</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><div class="footer-col-title">Produits</div><a href="produits.html">ADSClass</a><a href="produits.html">Hotel-PMS</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="tel:+212627616719">+212 627 616 719</a><a href="mailto:contact@adstech.com">contact@adstech.com</a><a>Niamey, Niger</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 ADS TECH</span><span>Abdourahmane DJIBO SALOU — PDG</span></div>
+</footer>
+<script src="shared.js"></script>
+<script>
+function scrollTo(id) {
+  document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+</body>
+</html>

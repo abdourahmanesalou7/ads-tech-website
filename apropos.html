@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À Propos — ADS TECH</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── FOUNDER ─────────────────────────────────────────────────────────── */
+.founder-section { padding:130px 40px; background:var(--offwhite); }
+.founder-inner { max-width:1320px; margin:0 auto; display:grid; grid-template-columns:1fr 1.15fr; gap:100px; align-items:center; }
+.founder-portrait {
+  aspect-ratio:4/5; border-radius:var(--r-xl);
+  background:var(--navy); position:relative; overflow:hidden;
+  box-shadow:var(--shadow-xl);
+}
+.founder-portrait-bg {
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 30%, rgba(14,123,114,.18) 0%, transparent 60%),
+             radial-gradient(ellipse 50% 50% at 80% 80%, rgba(201,168,76,.1) 0%, transparent 60%);
+}
+.founder-initials {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-58%);
+  font-family:var(--serif); font-size:120px; color:rgba(201,168,76,.08);
+  font-weight:300; letter-spacing:8px; user-select:none; white-space:nowrap;
+}
+/* ── Real photo ────────────────────────────────────────────────── */
+.founder-photo {
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center 10%;
+  filter:brightness(1.06) contrast(1.05) saturate(1.1);
+  transition:transform .7s cubic-bezier(.4,0,.2,1);
+}
+.founder-portrait:hover .founder-photo { transform:scale(1.04); }
+/* Premium gradient vignette over photo */
+.founder-portrait::after {
+  content:''; position:absolute; inset:0; z-index:1;
+  background:linear-gradient(
+    180deg,
+    rgba(8,15,26,.06) 0%,
+    rgba(8,15,26,.00) 25%,
+    rgba(8,15,26,.00) 52%,
+    rgba(8,15,26,.65) 80%,
+    rgba(8,15,26,.97) 100%
+  );
+}
+.founder-card-overlay { z-index:2; }
+.founder-card-overlay {
+  position:absolute; bottom:0; left:0; right:0;
+  background:linear-gradient(0deg, rgba(8,15,26,.96) 0%, rgba(8,15,26,.7) 60%, transparent 100%);
+  padding:44px 40px;
+}
+.founder-name { font-family:var(--serif); font-size:28px; color:var(--cream); margin-bottom:6px; }
+.founder-role { font-family:var(--mono); font-size:10px; letter-spacing:.18em; color:var(--gold); text-transform:uppercase; margin-bottom:20px; }
+.founder-chips { display:flex; flex-wrap:wrap; gap:8px; }
+.founder-chip { font-family:var(--mono); font-size:9.5px; padding:5px 12px; border-radius:100px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.12); color:rgba(255,255,255,.5); }
+
+.founder-content .s-label { margin-bottom:18px; }
+.founder-heading { font-family:var(--serif); font-size:clamp(38px,4vw,58px); font-weight:300; color:var(--navy); line-height:1.07; margin-bottom:24px; }
+.founder-heading em { font-style:italic; color:var(--gold); }
+.founder-text { font-size:14.5px; color:var(--slate); line-height:1.88; margin-bottom:16px; }
+
+.founder-quote {
+  margin:32px 0; padding:28px 32px;
+  border-left:2px solid var(--gold);
+  background:linear-gradient(90deg, rgba(201,168,76,.06), transparent 80%);
+  border-radius:0 var(--r-md) var(--r-md) 0;
+}
+.founder-quote p { font-family:var(--serif); font-size:20px; color:var(--navy); font-style:italic; line-height:1.55; }
+.founder-quote cite { font-family:var(--mono); font-size:10px; letter-spacing:.12em; color:var(--gold); text-transform:uppercase; margin-top:10px; display:block; font-style:normal; }
+
+.founder-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(0,0,0,.07); border-radius:var(--r-md); overflow:hidden; margin-top:36px; }
+.fstat { background:white; padding:26px 20px; text-align:center; }
+.fstat-num { font-family:var(--serif); font-size:36px; color:var(--gold); line-height:1; }
+.fstat-lbl { font-size:11px; color:var(--slate); text-transform:uppercase; letter-spacing:.08em; margin-top:6px; }
+
+/* ── VALUES ──────────────────────────────────────────────────────────── */
+.values-section { padding:130px 40px; background:var(--navy); }
+.values-inner { max-width:1320px; margin:0 auto; }
+.values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:72px; background:rgba(255,255,255,.05); border-radius:var(--r-xl); overflow:hidden; }
+.val-tile {
+  background:rgba(255,255,255,.03); padding:52px 44px;
+  transition:background .28s; position:relative; overflow:hidden;
+}
+.val-tile::before {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:linear-gradient(90deg, var(--gold), transparent);
+  opacity:0; transition:opacity .3s;
+}
+.val-tile:hover { background:rgba(255,255,255,.07); }
+.val-tile:hover::before { opacity:1; }
+.val-tile-icon { font-size:34px; margin-bottom:22px; display:block; }
+.val-tile-name { font-family:var(--serif); font-size:26px; color:var(--cream); margin-bottom:14px; }
+.val-tile-desc { font-size:13.5px; color:rgba(255,255,255,.4); line-height:1.85; }
+
+/* ── TIMELINE ────────────────────────────────────────────────────────── */
+.timeline-section { padding:130px 40px; background:var(--cream); }
+.timeline-inner { max-width:960px; margin:0 auto; }
+.timeline { margin-top:72px; position:relative; }
+.timeline::before {
+  content:''; position:absolute; left:50%; top:0; bottom:0;
+  width:1px; background:linear-gradient(180deg, var(--gold) 0%, rgba(201,168,76,.08) 100%);
+  transform:translateX(-50%);
+}
+.tl-item { display:grid; grid-template-columns:1fr 56px 1fr; gap:0; margin-bottom:56px; align-items:flex-start; }
+.tl-card {
+  background:white; border:1px solid rgba(0,0,0,.07);
+  border-radius:var(--r-lg); padding:30px 32px;
+  box-shadow:var(--shadow-sm); transition:box-shadow .25s;
+}
+.tl-card:hover { box-shadow:var(--shadow-md); }
+.tl-card.right { text-align:left; }
+.tl-card.left { text-align:right; }
+.tl-year { font-family:var(--mono); font-size:10px; letter-spacing:.18em; color:var(--gold); text-transform:uppercase; margin-bottom:8px; }
+.tl-title { font-family:var(--serif); font-size:22px; color:var(--navy); margin-bottom:10px; }
+.tl-desc { font-size:13px; color:var(--slate); line-height:1.75; }
+.tl-dot { display:flex; align-items:flex-start; justify-content:center; padding-top:14px; }
+.tl-dot-inner { width:14px; height:14px; border-radius:50%; background:var(--gold); border:3px solid var(--cream); position:relative; z-index:1; }
+.tl-spacer {}
+
+/* ── MISSION ─────────────────────────────────────────────────────────── */
+.mission-section {
+  padding:140px 40px; text-align:center;
+  background:linear-gradient(160deg, var(--navy) 0%, #0e2240 50%, #091525 100%);
+  position:relative; overflow:hidden;
+}
+.mission-section::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 65% 65% at 50% 50%, rgba(201,168,76,.07) 0%, transparent 65%);
+}
+.mission-inner { max-width:820px; margin:0 auto; position:relative; z-index:1; }
+.mission-ornament { font-family:var(--serif); font-size:80px; color:rgba(201,168,76,.12); line-height:1; margin-bottom:8px; }
+.mission-quote { font-family:var(--serif); font-size:clamp(24px,3.5vw,40px); color:var(--cream); font-weight:300; font-style:italic; line-height:1.42; margin-bottom:32px; }
+.mission-quote em { font-style:normal; color:var(--gold); }
+.mission-cite { font-family:var(--mono); font-size:10.5px; letter-spacing:.18em; color:rgba(255,255,255,.32); text-transform:uppercase; }
+
+/* ── IMPACT ──────────────────────────────────────────────────────────── */
+.impact-section { padding:110px 40px; background:var(--offwhite); }
+.impact-inner { max-width:1100px; margin:0 auto; }
+.impact-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-top:64px; background:rgba(0,0,0,.07); border-radius:var(--r-xl); overflow:hidden; }
+.impact-cell { background:var(--offwhite); padding:52px 32px; text-align:center; transition:background .25s; }
+.impact-cell:hover { background:white; }
+.impact-num { font-family:var(--serif); font-size:60px; font-weight:300; color:var(--gold); line-height:1; }
+.impact-lbl { font-size:13px; color:var(--slate); margin-top:12px; line-height:1.55; }
+
+@media(max-width:1080px){
+  .founder-inner { grid-template-columns:1fr; gap:60px; }
+  .values-grid { grid-template-columns:1fr 1fr; }
+  .timeline::before { left:28px; }
+  .tl-item { grid-template-columns:56px 1fr; }
+  .tl-card.left { text-align:left; grid-column:2; }
+  .tl-spacer { display:none; }
+  .tl-dot { justify-content:flex-start; padding-left:21px; }
+  .impact-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:640px){
+  .values-grid { grid-template-columns:1fr; }
+  .impact-grid { grid-template-columns:1fr 1fr; }
+  .founder-stats { grid-template-columns:1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">ĀDS <em>TECH</em></a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a><a href="produits.html">Produits</a>
+      <a href="services.html">Services</a><a href="apropos.html" class="active">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="contact.html" class="btn btn-outline-light btn-sm">Nous contacter</a>
+      <a href="contact.html" class="btn btn-gold btn-sm">Démarrer un projet →</a>
+    </div>
+    <button class="nav-burger" onclick="toggleMenu()">☰</button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html">Accueil</a><a href="produits.html">Produits</a>
+    <a href="services.html">Services</a><a href="apropos.html">À propos</a><a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Accueil</a><span>/</span>À Propos</div>
+    <h1><em>ADS TECH</em><br>Notre histoire</h1>
+    <p>Une entreprise technologique nigérienne fondée sur la conviction que la souveraineté numérique de l'Afrique commence par des solutions conçues localement, par des talents locaux.</p>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder-section">
+  <div class="founder-inner">
+    <div class="founder-portrait">
+      <div class="founder-portrait-bg"></div>
+      <img
+        src="photo_fondateur.jpg"
+        alt="Abdourahmane DJIBO SALOU — Fondateur &amp; PDG ADS TECH"
+        class="founder-photo"
+      >
+      <div class="founder-card-overlay">
+        <div class="founder-name">Abdourahmane DJIBO SALOU</div>
+        <div class="founder-role">Promoteur &amp; PDG — ADS TECH</div>
+        <div class="founder-chips">
+          <span class="founder-chip">Ingénieur IA</span>
+          <span class="founder-chip">Full-Stack Developer</span>
+          <span class="founder-chip">Entrepreneur</span>
+          <span class="founder-chip">Niger</span>
+        </div>
+      </div>
+    </div>
+    <div class="founder-content">
+      <div class="s-label">Notre Fondateur</div>
+      <h2 class="founder-heading">Ingénieur IA &amp;<br><em>entrepreneur</em><br>nigérien</h2>
+      <p class="founder-text">Abdourahmane DJIBO SALOU est un ingénieur en Intelligence Artificielle et développeur full-stack, fondateur et PDG d'ADS TECH. Sa vision : développer des solutions numériques souveraines, pensées localement et bâties avec les standards technologiques les plus avancés.</p>
+      <p class="founder-text">Maîtrisant l'ensemble du cycle de vie d'un produit technologique — de la conception architecturale au déploiement cloud — il s'est spécialisé dans l'application concrète de l'intelligence artificielle aux défis structurels de l'Afrique de l'Ouest.</p>
+      <div class="founder-quote">
+        <p>"La technologie est le levier le plus puissant de développement dans les marchés émergents. ADS TECH est là pour l'actionner."</p>
+        <cite>— Abdourahmane DJIBO SALOU, Promoteur &amp; PDG</cite>
+      </div>
+      <div class="founder-stats">
+        <div class="fstat"><div class="fstat-num" data-count="2" data-suffix="+">—</div><div class="fstat-lbl">Produits SaaS</div></div>
+        <div class="fstat"><div class="fstat-num" data-count="5" data-suffix="+">—</div><div class="fstat-lbl">Pays ciblés</div></div>
+        <div class="fstat"><div class="fstat-num" style="font-size:28px;color:var(--gold)">IA</div><div class="fstat-lbl">Architecture RAG</div></div>
+      </div>
+      <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap">
+        <a href="contact.html" class="btn btn-gold">Travailler avec nous →</a>
+        <a href="contact.html" class="btn btn-outline-dark">Prendre rendez-vous</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values-section">
+  <div class="values-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-end;margin-bottom:0">
+      <div>
+        <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:12px"><span style="width:28px;height:1px;background:var(--gold);display:inline-block"></span>Ce qui nous guide</div>
+        <h2 style="font-family:var(--serif);font-size:clamp(36px,4vw,58px);font-weight:300;color:var(--cream);line-height:1.07">Nos <em style="font-style:italic;color:var(--gold)">Valeurs</em></h2>
+      </div>
+      <p style="font-size:14px;color:rgba(255,255,255,.38);line-height:1.85;padding-bottom:6px">Six principes fondamentaux qui guident chaque décision, chaque ligne de code et chaque interaction avec nos clients.</p>
+    </div>
+    <div class="values-grid">
+      <div class="val-tile"><span class="val-tile-icon">🔬</span><div class="val-tile-name">Innovation</div><p class="val-tile-desc">Nous anticipons les besoins et explorons les technologies de pointe pour proposer des solutions avant-gardistes adaptées aux réalités du marché africain.</p></div>
+      <div class="val-tile"><span class="val-tile-icon">🏆</span><div class="val-tile-name">Excellence</div><p class="val-tile-desc">Chaque ligne de code, chaque interface, chaque interaction — nous visons le standard le plus élevé de qualité, de performance et de fiabilité.</p></div>
+      <div class="val-tile"><span class="val-tile-icon">🌍</span><div class="val-tile-name">Impact Local</div><p class="val-tile-desc">Nos solutions sont pensées pour les réalités africaines et contribuent directement au développement socio-économique du Niger et de la région.</p></div>
+      <div class="val-tile"><span class="val-tile-icon">🔒</span><div class="val-tile-name">Souveraineté</div><p class="val-tile-desc">Nos données restent locales, nos solutions sont indépendantes. Nous bâtissons une infrastructure numérique qui ne dépend d'aucune plateforme étrangère.</p></div>
+      <div class="val-tile"><span class="val-tile-icon">🤝</span><div class="val-tile-name">Partenariat</div><p class="val-tile-desc">Nous ne sommes pas de simples prestataires — nous sommes des partenaires engagés dans la réussite à long terme de chaque client que nous accompagnons.</p></div>
+      <div class="val-tile"><span class="val-tile-icon">📈</span><div class="val-tile-name">Croissance Durable</div><p class="val-tile-desc">Un modèle économique solide, une expansion régionale progressive et une création de valeur durable pour nos clients, nos équipes et l'écosystème africain.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="timeline-inner">
+    <div style="text-align:center;margin-bottom:0">
+      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:14px"><span style="width:40px;height:1px;background:var(--gold);opacity:.5;display:inline-block"></span>Notre Parcours<span style="width:40px;height:1px;background:var(--gold);opacity:.5;display:inline-block"></span></div>
+      <h2 style="font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:300;color:var(--navy);line-height:1.07">L'histoire <em style="font-style:italic;color:var(--gold)">d'ADS TECH</em></h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-card left">
+          <div class="tl-year">Fondation</div>
+          <div class="tl-title">Naissance d'ADS TECH</div>
+          <p class="tl-desc">Création de l'entreprise à Niamey avec une vision claire : des solutions numériques souveraines pour l'Afrique de l'Ouest, pensées et construites localement.</p>
+        </div>
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-spacer"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card right">
+          <div class="tl-year">Premier Produit</div>
+          <div class="tl-title">Naissance d'ADSClass</div>
+          <p class="tl-desc">Développement du premier prototype d'ADSClass — plateforme de gestion scolaire intelligente avec backend robuste, base de données optimisée et module IA pionnier.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-card left">
+          <div class="tl-year">Innovation IA</div>
+          <div class="tl-title">Architecture RAG Souveraine</div>
+          <p class="tl-desc">Intégration d'un pipeline IA complet dans ADSClass — un chatbot pédagogique qui répond à partir des vrais cours de l'établissement. Une innovation différenciante majeure.</p>
+        </div>
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-spacer"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card right">
+          <div class="tl-year">Expansion</div>
+          <div class="tl-title">Hotel-PMS — 2e Produit</div>
+          <p class="tl-desc">Lancement du développement d'Hotel-PMS : système de gestion hôtelière intelligent combinant ERP puissant, réservation en ligne et assistant IA client disponible 24h/24.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-card left">
+          <div class="tl-year">2025 — Aujourd'hui</div>
+          <div class="tl-title">Industrialisation</div>
+          <p class="tl-desc">ADSClass et Hotel-PMS en phase avancée de développement. Recherche de partenariats institutionnels pour le déploiement national. ADS TECH s'affirme comme acteur de référence.</p>
+        </div>
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-spacer"></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card right">
+          <div class="tl-year">Horizon 2026–2028</div>
+          <div class="tl-title">Expansion Régionale</div>
+          <p class="tl-desc">Déploiement au Burkina Faso, Mali, Bénin, Sénégal et Côte d'Ivoire. Objectif : devenir la référence EdTech et HotelTech de toute l'Afrique de l'Ouest.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION QUOTE -->
+<section class="mission-section">
+  <div class="mission-inner">
+    <div class="mission-ornament">"</div>
+    <p class="mission-quote">La souveraineté numérique de l'Afrique commence par des solutions pensées localement, bâties par des talents locaux, <em>pour des réalités locales.</em></p>
+    <div class="mission-cite">— Abdourahmane DJIBO SALOU, Promoteur &amp; PDG d'ADS TECH</div>
+    <div style="margin-top:48px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" class="btn btn-gold btn-lg">Nous rejoindre →</a>
+      <a href="services.html" class="btn btn-outline-light btn-lg">Notre expertise</a>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact-section">
+  <div class="impact-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-end;margin-bottom:0">
+      <div>
+        <div class="s-label">Impact Projeté</div>
+        <h2 style="font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:300;color:var(--navy);line-height:1.07">Notre <em style="font-style:italic;color:var(--gold)">ambition</em></h2>
+      </div>
+      <p style="font-size:14.5px;color:var(--slate);line-height:1.85;padding-bottom:6px">Des projections sur 5 ans qui reflètent notre ambition de transformer durablement l'éducation et l'hôtellerie en Afrique de l'Ouest.</p>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-cell">
+        <div class="impact-num" data-count="10" data-suffix="+">—</div>
+        <div class="impact-lbl">Établissements scolaires<br>clients en 5 ans</div>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num" data-count="15" data-suffix="+">—</div>
+        <div class="impact-lbl">Hôtels équipés<br>d'un PMS intelligent</div>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num" data-count="5" data-suffix="+">—</div>
+        <div class="impact-lbl">Pays d'Afrique<br>de l'Ouest couverts</div>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num" style="font-size:44px;color:var(--gold)">100%</div>
+        <div class="impact-lbl">Solutions<br>souveraines locales</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="footer-brand-name">ĀDS <em>TECH</em></div><p>Solutions Numériques &amp; Intelligence Artificielle — Niamey, Niger — Afrique de l'Ouest</p></div>
+    <div class="footer-col"><div class="footer-col-title">Navigation</div><a href="index.html">Accueil</a><a href="produits.html">Produits</a><a href="services.html">Services</a><a href="apropos.html">À propos</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><div class="footer-col-title">Produits</div><a href="produits.html">ADSClass</a><a href="produits.html">Hotel-PMS</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="tel:+212627616719">+212 627 616 719</a><a href="mailto:contact@adstech.com">contact@adstech.com</a><a>Niamey, Niger</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 ADS TECH</span><span>Abdourahmane DJIBO SALOU — PDG</span></div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

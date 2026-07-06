@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — ADS TECH</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* ── SERVICES GRID ───────────────────────────────────────────────────── */
+.svc-section { padding:130px 40px; background:var(--offwhite); }
+.svc-inner { max-width:1320px; margin:0 auto; }
+.svc-header { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:flex-end; margin-bottom:80px; }
+.svc-header-right p { font-size:14.5px; color:var(--slate); line-height:1.85; max-width:400px; margin-left:auto; text-align:right; }
+.svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:rgba(0,0,0,.07); border-radius:var(--r-xl); overflow:hidden; }
+.svc-tile {
+  background:var(--offwhite); padding:52px 44px;
+  transition:background .28s, box-shadow .28s;
+  cursor:default; position:relative; overflow:hidden;
+}
+.svc-tile::after {
+  content:''; position:absolute; bottom:0; left:44px; right:44px; height:2px;
+  background:linear-gradient(90deg, var(--gold), transparent);
+  transform:scaleX(0); transform-origin:left; transition:transform .35s;
+}
+.svc-tile:hover { background:#fff; }
+.svc-tile:hover::after { transform:scaleX(1); }
+.svc-tile-num { font-family:var(--mono); font-size:10px; letter-spacing:.2em; color:rgba(0,0,0,.18); text-transform:uppercase; margin-bottom:28px; }
+.svc-tile-icon { font-size:34px; margin-bottom:22px; display:block; }
+.svc-tile-name { font-family:var(--serif); font-size:26px; color:var(--navy); margin-bottom:14px; line-height:1.2; }
+.svc-tile-desc { font-size:13.5px; color:var(--slate); line-height:1.88; margin-bottom:24px; }
+.svc-tile-tags { display:flex; flex-wrap:wrap; gap:7px; }
+.svc-tile-tag { font-family:var(--mono); font-size:9.5px; letter-spacing:.08em; padding:5px 11px; border-radius:100px; background:rgba(0,0,0,.05); color:var(--slate); border:1px solid rgba(0,0,0,.07); }
+
+/* ── PROCESS ─────────────────────────────────────────────────────────── */
+.process-section { padding:130px 40px; background:var(--navy); }
+.process-inner { max-width:1100px; margin:0 auto; }
+.process-header { max-width:600px; margin-bottom:80px; }
+.process-steps { display:grid; gap:0; }
+.process-step {
+  display:grid; grid-template-columns:80px 1fr;
+  gap:0; border-bottom:1px solid var(--border); padding:48px 0;
+  transition:background .2s;
+}
+.process-step:first-child { border-top:1px solid var(--border); }
+.process-step:hover { background:rgba(255,255,255,.025); margin:0 -40px; padding:48px 40px; }
+.ps-left { padding-right:40px; }
+.ps-num {
+  width:52px; height:52px; border-radius:50%;
+  border:1.5px solid rgba(201,168,76,.4);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--serif); font-size:22px; color:var(--gold);
+}
+.ps-right {}
+.ps-phase { font-family:var(--mono); font-size:10px; letter-spacing:.18em; color:var(--gold); text-transform:uppercase; margin-bottom:12px; }
+.ps-title { font-family:var(--serif); font-size:30px; color:var(--cream); font-weight:300; margin-bottom:14px; }
+.ps-desc { font-size:14px; color:rgba(255,255,255,.44); line-height:1.88; max-width:640px; }
+
+/* ── EXPERTISE DEEP ──────────────────────────────────────────────────── */
+.exp-section { padding:130px 40px; background:var(--cream); }
+.exp-inner { max-width:1320px; margin:0 auto; }
+.exp-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:72px; }
+.exp-card {
+  background:var(--offwhite); border:1px solid rgba(0,0,0,.07);
+  border-radius:var(--r-lg); padding:48px 44px;
+  transition:box-shadow .28s, transform .28s;
+}
+.exp-card:hover { box-shadow:var(--shadow-lg); transform:translateY(-4px); }
+.exp-card-header { display:flex; align-items:flex-start; gap:18px; margin-bottom:22px; }
+.exp-card-icon {
+  width:54px; height:54px; border-radius:14px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; font-size:24px;
+}
+.eci-teal { background:rgba(14,123,114,.12); border:1px solid rgba(14,123,114,.2); }
+.eci-gold { background:rgba(201,168,76,.1); border:1px solid rgba(201,168,76,.18); }
+.eci-blue { background:rgba(27,79,216,.1); border:1px solid rgba(27,79,216,.18); }
+.eci-slate { background:rgba(90,106,126,.1); border:1px solid rgba(90,106,126,.18); }
+.exp-card-title { font-family:var(--serif); font-size:24px; color:var(--navy); line-height:1.15; }
+.exp-card-sub { font-family:var(--mono); font-size:10px; letter-spacing:.12em; color:var(--gold); text-transform:uppercase; margin-top:4px; }
+.exp-card-desc { font-size:13.5px; color:var(--slate); line-height:1.85; margin-bottom:24px; }
+.exp-card-list { display:flex; flex-direction:column; gap:0; }
+.exp-card-li {
+  font-size:13px; color:#5a6a7e; padding:10px 0;
+  border-bottom:1px solid rgba(0,0,0,.06);
+  display:flex; align-items:center; gap:10px;
+}
+.exp-card-li::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+.exp-card-li:last-child { border:none; }
+
+/* ── CTA STRIP ───────────────────────────────────────────────────────── */
+.cta-strip {
+  padding:110px 40px;
+  background:linear-gradient(135deg, var(--navy) 0%, #0e2240 60%, var(--navy) 100%);
+  text-align:center; position:relative; overflow:hidden;
+}
+.cta-strip::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 55% 65% at 50% 50%, rgba(201,168,76,.07) 0%, transparent 65%);
+}
+.cta-strip-inner { max-width:680px; margin:0 auto; position:relative; z-index:1; }
+.cta-strip h2 { font-family:var(--serif); font-size:clamp(36px,4.5vw,62px); font-weight:300; color:var(--cream); line-height:1.08; margin-bottom:20px; }
+.cta-strip h2 em { font-style:italic; color:var(--gold); }
+.cta-strip p { font-size:15px; color:rgba(255,255,255,.42); line-height:1.82; margin-bottom:48px; max-width:520px; margin-inline:auto; }
+
+@media(max-width:1080px){
+  .svc-grid { grid-template-columns:1fr 1fr; }
+  .svc-header { grid-template-columns:1fr; }
+  .svc-header-right p { text-align:left; margin-left:0; }
+  .exp-grid { grid-template-columns:1fr; }
+}
+@media(max-width:640px){
+  .svc-grid { grid-template-columns:1fr; }
+  .process-step:hover { margin:0; padding:48px 0; }
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">ĀDS <em>TECH</em></a>
+    <div class="nav-links">
+      <a href="index.html">Accueil</a><a href="produits.html">Produits</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="apropos.html">À propos</a><a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="contact.html" class="btn btn-outline-light btn-sm">Nous contacter</a>
+      <a href="contact.html" class="btn btn-gold btn-sm">Démarrer un projet →</a>
+    </div>
+    <button class="nav-burger" onclick="toggleMenu()">☰</button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html">Accueil</a><a href="produits.html">Produits</a>
+    <a href="services.html">Services</a><a href="apropos.html">À propos</a><a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Accueil</a><span>/</span>Services</div>
+    <h1>Notre <em>Expertise</em><br>à votre service</h1>
+    <p>De la conception architecturale à la mise en production, ADS TECH maîtrise l'ensemble du cycle de vie des solutions numériques — IA, développement, cloud et cybersécurité.</p>
+  </div>
+</section>
+
+<!-- SERVICES GRID -->
+<section class="svc-section">
+  <div class="svc-inner">
+    <div class="svc-header">
+      <div>
+        <div class="s-label">Ce que nous offrons</div>
+        <h2 style="font-family:var(--serif);font-size:clamp(38px,4.5vw,62px);font-weight:300;color:var(--navy);line-height:1.07">Six domaines<br><em style="font-style:italic;color:var(--gold)">d'excellence</em></h2>
+      </div>
+      <div class="svc-header-right">
+        <p>Une expertise technique de haut niveau, au service de projets concrets qui transforment durablement les organisations.</p>
+      </div>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-tile">
+        <div class="svc-tile-num">01 / Expertise Principale</div>
+        <span class="svc-tile-icon">🤖</span>
+        <div class="svc-tile-name">Intelligence Artificielle</div>
+        <p class="svc-tile-desc">Chatbots RAG souverains, analyse prédictive, NLP multilingue, systèmes de recommandation et intégration LLM — une IA qui comprend vraiment votre contexte métier.</p>
+        <div class="svc-tile-tags">
+          <span class="svc-tile-tag">Architecture RAG</span>
+          <span class="svc-tile-tag">NLP Multilingue</span>
+          <span class="svc-tile-tag">LLM Integration</span>
+          <span class="svc-tile-tag">FAISS</span>
+        </div>
+      </div>
+      <div class="svc-tile">
+        <div class="svc-tile-num">02 / Core</div>
+        <span class="svc-tile-icon">⚙️</span>
+        <div class="svc-tile-name">Développement Logiciel</div>
+        <p class="svc-tile-desc">Applications web et mobiles sur mesure, ERP personnalisés, plateformes SaaS multi-tenant — architecture moderne, code propre, livraisons fiables dans les délais.</p>
+        <div class="svc-tile-tags">
+          <span class="svc-tile-tag">Web &amp; Mobile</span>
+          <span class="svc-tile-tag">API RESTful</span>
+          <span class="svc-tile-tag">ERP / SaaS</span>
+          <span class="svc-tile-tag">Odoo 18</span>
+        </div>
+      </div>
+      <div class="svc-tile">
+        <div class="svc-tile-num">03 / Infrastructure</div>
+        <span class="svc-tile-icon">☁️</span>
+        <div class="svc-tile-name">Cloud &amp; Infrastructure</div>
+        <p class="svc-tile-desc">Hébergement sécurisé, CI/CD automatisé, monitoring 24/7, scalabilité à la demande — une infrastructure pensée pour la haute disponibilité et la croissance.</p>
+        <div class="svc-tile-tags">
+          <span class="svc-tile-tag">CI/CD</span>
+          <span class="svc-tile-tag">Monitoring</span>
+          <span class="svc-tile-tag">Scalabilité</span>
+          <span class="svc-tile-tag">SLA 99.5%</span>
+        </div>
+      </div>
+      <div class="svc-tile">
+        <div class="svc-tile-num">04 / Sécurité</div>
+        <span class="svc-tile-icon">🔐</span>
+        <div class="svc-tile-name">Cybersécurité</div>
+        <p class="svc-tile-desc">Audit de sécurité, architecture défensive, contrôle d'accès granulaire, chiffrement des données — la sécurité n'est pas un ajout, c'est un fondement.</p>
+        <div class="svc-tile-tags">
+          <span class="svc-tile-tag">Audit OWASP</span>
+          <span class="svc-tile-tag">RBAC</span>
+          <span class="svc-tile-tag">Chiffrement</span>
+          <span class="svc-tile-tag">Audit Trail</span>
+        </div>
+      </div>
+      <div class="svc-tile">
+        <div class="svc-tile-num">05 / Analytics</div>
+        <span class="svc-tile-icon">📊</span>
+        <div class="svc-tile-name">Data &amp; Analytics</div>
+        <p class="svc-tile-desc">Tableaux de bord temps réel, rapports automatisés, KPI métier sur mesure — transformez votre capital de données en décisions stratégiques éclairées.</p>
+        <div class="svc-tile-tags">
+          <span class="svc-tile-tag">Dashboards</span>
+          <span class="svc-tile-tag">BI</span>
+          <span class="svc-tile-tag">KPI</span>
+          <span class="svc-tile-tag">Export PDF</span>
+        </div>
+      </div>
+      <div class="svc-tile">
+        <div class="svc-tile-num">06 / Formation</div>
+        <span class="svc-tile-icon">🎓</span>
+        <div class="svc-tile-name">Formation Numérique</div>
+        <p class="svc-tile-desc">Programmes de montée en compétences pour équipes locales — développement web, intelligence artificielle, cybersécurité et gestion de projet agile.</p>
+        <div class="svc-tile-tags">
+          <span class="svc-tile-tag">Bootcamps</span>
+          <span class="svc-tile-tag">IA Appliquée</span>
+          <span class="svc-tile-tag">Dev Web</span>
+          <span class="svc-tile-tag">Agile</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section">
+  <div class="process-inner">
+    <div class="process-header">
+      <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:12px"><span style="width:28px;height:1px;background:var(--gold);display:inline-block"></span>Notre Méthode</div>
+      <h2 style="font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:300;color:var(--cream);line-height:1.06;margin-bottom:16px">Un processus <em style="font-style:italic;color:var(--gold)">rigoureux</em></h2>
+      <p style="font-size:14px;color:rgba(255,255,255,.4);line-height:1.85">Chaque projet ADS TECH suit une méthodologie éprouvée, du cadrage initial à la mise en production, avec des jalons clairs et des livrables définis à chaque étape.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="ps-left"><div class="ps-num">1</div></div>
+        <div class="ps-right">
+          <div class="ps-phase">Phase Initiale</div>
+          <div class="ps-title">Analyse &amp; Cadrage</div>
+          <p class="ps-desc">Immersion complète dans vos enjeux métier. Ateliers de découverte, cartographie des besoins, rédaction du cahier des charges et validation de l'architecture technique avec vos équipes.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="ps-left"><div class="ps-num">2</div></div>
+        <div class="ps-right">
+          <div class="ps-phase">Phase Design</div>
+          <div class="ps-title">Conception &amp; Architecture</div>
+          <p class="ps-desc">Modélisation UML complète, maquettes UI/UX haute fidélité, conception de la base de données et de l'architecture système. Rien n'est développé avant validation conjointe.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="ps-left"><div class="ps-num">3</div></div>
+        <div class="ps-right">
+          <div class="ps-phase">Phase Build</div>
+          <div class="ps-title">Développement Agile</div>
+          <p class="ps-desc">Sprints de deux semaines avec démonstrations régulières. Intégration continue, revue de code systématique et tests automatisés à chaque itération — qualité garantie en continu.</p>
+        </div>
+      </div>
+      <div class="process-step">
+        <div class="ps-left"><div class="ps-num">4</div></div>
+        <div class="ps-right">
+          <div class="ps-phase">Phase Launch</div>
+          <div class="ps-title">Déploiement &amp; Formation</div>
+          <p class="ps-desc">Mise en production sécurisée avec SSL, monitoring et sauvegardes automatiques. Formation intensive des équipes utilisatrices et documentation complète livrée avec la solution.</p>
+        </div>
+      </div>
+      <div class="process-step" style="border-bottom:none">
+        <div class="ps-left"><div class="ps-num">5</div></div>
+        <div class="ps-right">
+          <div class="ps-phase">Phase Support</div>
+          <div class="ps-title">Accompagnement Continu</div>
+          <p class="ps-desc">SLA défini, support réactif, mises à jour régulières et monitoring 24/7. Nous sommes un partenaire de long terme — pas un prestataire qui disparaît après la livraison.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE DEEP -->
+<section class="exp-section">
+  <div class="exp-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:flex-end;margin-bottom:0">
+      <div>
+        <div class="s-label">Domaines d'expertise</div>
+        <h2 style="font-family:var(--serif);font-size:clamp(36px,4vw,56px);font-weight:300;color:var(--navy);line-height:1.07">Ce que nous<br><em style="font-style:italic;color:var(--gold)">maîtrisons</em></h2>
+      </div>
+      <p style="font-size:14.5px;color:var(--slate);line-height:1.85;padding-bottom:6px">Des compétences techniques profondes, forgées dans la conception et le déploiement de nos propres produits SaaS.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card">
+        <div class="exp-card-header">
+          <div class="exp-card-icon eci-teal">🤖</div>
+          <div>
+            <div class="exp-card-title">Intelligence Artificielle</div>
+            <div class="exp-card-sub">RAG · NLP · LLM · FAISS</div>
+          </div>
+        </div>
+        <p class="exp-card-desc">Architecture RAG souveraine, chatbots multilingues, analyse prédictive, systèmes de recommandation et intégration des derniers modèles de langage.</p>
+        <div class="exp-card-list">
+          <div class="exp-card-li">Pipeline RAG complet — indexation vectorielle FAISS</div>
+          <div class="exp-card-li">Chatbots NLP multilingues (FR / EN / AR)</div>
+          <div class="exp-card-li">Intégration LLM (Groq, Ollama, API OpenAI)</div>
+          <div class="exp-card-li">Embeddings sémantiques multilingues</div>
+          <div class="exp-card-li">Mémoire conversationnelle &amp; personnalisation</div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-header">
+          <div class="exp-card-icon eci-gold">⚙️</div>
+          <div>
+            <div class="exp-card-title">Développement Logiciel</div>
+            <div class="exp-card-sub">Web · Mobile · API · ERP</div>
+          </div>
+        </div>
+        <p class="exp-card-desc">Plateformes SaaS multi-tenant, ERP Odoo personnalisé, APIs RESTful robustes et interfaces modernes — du prototype à la production.</p>
+        <div class="exp-card-list">
+          <div class="exp-card-li">APIs RESTful — sécurisées, documentées, versionnées</div>
+          <div class="exp-card-li">Interfaces web modernes — SSR, SSG, PWA</div>
+          <div class="exp-card-li">Odoo 18 — modules ERP entièrement personnalisés</div>
+          <div class="exp-card-li">Architecture SaaS multi-tenant scalable</div>
+          <div class="exp-card-li">Intégrations Stripe, Mobile Money, SMS, SMTP</div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-header">
+          <div class="exp-card-icon eci-blue">☁️</div>
+          <div>
+            <div class="exp-card-title">Cloud &amp; DevOps</div>
+            <div class="exp-card-sub">CI/CD · Monitoring · Sécurité</div>
+          </div>
+        </div>
+        <p class="exp-card-desc">Infrastructure cloud hautement disponible, pipelines CI/CD, monitoring proactif et politiques de sauvegarde robustes — pour un SLA de 99,5 %.</p>
+        <div class="exp-card-list">
+          <div class="exp-card-li">Hébergement cloud — configuration &amp; sécurisation</div>
+          <div class="exp-card-li">CI/CD automatisé — déploiements sans interruption</div>
+          <div class="exp-card-li">Monitoring temps réel — alertes proactives</div>
+          <div class="exp-card-li">CDN + WAF + Anti-DDoS — protection multicouche</div>
+          <div class="exp-card-li">Sauvegardes automatiques + reprise sur incident</div>
+        </div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-card-header">
+          <div class="exp-card-icon eci-slate">🔐</div>
+          <div>
+            <div class="exp-card-title">Cybersécurité</div>
+            <div class="exp-card-sub">OWASP · RBAC · Conformité</div>
+          </div>
+        </div>
+        <p class="exp-card-desc">Sécurité by design intégrée dès la conception — audit OWASP, contrôle d'accès granulaire, chiffrement bout-en-bout et journalisation complète.</p>
+        <div class="exp-card-list">
+          <div class="exp-card-li">Audit de sécurité OWASP Top 10</div>
+          <div class="exp-card-li">RBAC strict — isolation multi-tenant garantie</div>
+          <div class="exp-card-li">Chiffrement HTTPS/TLS 1.3 + certificats auto</div>
+          <div class="exp-card-li">Gestion sécurisée des secrets et credentials</div>
+          <div class="exp-card-li">Journalisation horodatée — audit trail complet</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <div class="cta-strip-inner">
+    <h2>Votre projet mérite<br>la meilleure <em>expertise</em></h2>
+    <p>Discutons de vos ambitions numériques. Notre équipe est disponible pour une consultation gratuite et sans engagement.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" class="btn btn-gold btn-lg">Démarrer un projet →</a>
+      <a href="produits.html" class="btn btn-outline-light btn-lg">Voir nos produits</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="footer-brand-name">ĀDS <em>TECH</em></div><p>Solutions Numériques &amp; Intelligence Artificielle — Niamey, Niger</p></div>
+    <div class="footer-col"><div class="footer-col-title">Navigation</div><a href="index.html">Accueil</a><a href="produits.html">Produits</a><a href="services.html">Services</a><a href="apropos.html">À propos</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><div class="footer-col-title">Produits</div><a href="produits.html">ADSClass</a><a href="produits.html">Hotel-PMS</a></div>
+    <div class="footer-col"><div class="footer-col-title">Contact</div><a href="tel:+212627616719">+212 627 616 719</a><a href="mailto:contact@adstech.com">contact@adstech.com</a><a>Niamey, Niger</a></div>
+  </div>
+  <div class="footer-bottom"><span>© 2025 ADS TECH</span><span>Abdourahmane DJIBO SALOU — PDG</span></div>
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>
