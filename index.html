@@ -3,163 +3,397 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ADS TECH — Intelligence Artificielle & Solutions Numériques</title>
-<meta name="description" content="ADS TECH conçoit des plateformes intelligentes pour digitaliser l'éducation et l'hôtellerie en Afrique de l'Ouest.">
+<title>ADS TECH — Intelligence Artificielle &amp; Solutions Numériques en Afrique</title>
+<!-- ══════════ SEO ULTRA-PREMIUM — ADS TECH ══════════ -->
+  <!-- Primary -->
+  <meta name="description" content="ADS TECH conçoit des plateformes numériques intelligentes pour l'Afrique de l'Ouest. ADSClass (ERP scolaire IA) et Hotel-PMS — solutions SaaS souveraines.">
+  <meta name="keywords" content="ADS TECH, AdsTech, Ads Tech, ads tech, ADSTECH, intelligence artificielle Niger, solutions numériques Afrique, ADSClass, Hotel PMS, ERP scolaire IA, transformation digitale Afrique, SaaS Afrique, chatbot IA pédagogique, développement logiciel Niger, IA Afrique de l'Ouest">
+  <meta name="author" content="ADS TECH — Abdourahmane DJIBO SALOU">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="language" content="French">
+  <meta name="revisit-after" content="7 days">
+  <meta name="geo.region" content="NE">
+  <meta name="geo.placename" content="Niamey, Niger">
+  <link rel="canonical" href="https://www.adstech.net/index.html">
+
+  <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.adstech.net/index.html">
+  <meta property="og:site_name" content="ADS TECH">
+  <meta property="og:title" content="ADS TECH — Intelligence Artificielle &amp; Solutions Numériques">
+  <meta property="og:description" content="Plateformes SaaS intelligentes pour l'éducation et l'hôtellerie en Afrique de l'Ouest. ADSClass &amp; Hotel-PMS par ADS TECH.">
+  <meta property="og:image" content="https://www.adstech.net/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ADS TECH — Solutions Numériques &amp; Intelligence Artificielle">
+  <meta property="og:locale" content="fr_FR">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ADS TECH — IA &amp; Solutions Numériques pour l'Afrique">
+  <meta name="twitter:description" content="Plateformes SaaS intelligentes pour l'éducation et l'hôtellerie en Afrique de l'Ouest. ADSClass &amp; Hotel-PMS par ADS TECH.">
+  <meta name="twitter:image" content="https://www.adstech.net/og-image.jpg">
+  <meta name="twitter:image:alt" content="ADS TECH Logo">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <meta name="theme-color" content="#080F1A">
+  <meta name="msapplication-TileColor" content="#080F1A">
+  <meta name="msapplication-TileImage" content="logo.png">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ADS TECH",
+    "alternateName": ["AdsTech", "Ads Tech", "ADSTECH", "ADS-TECH"],
+    "url": "https://www.adstech.net",
+    "logo": "https://www.adstech.net/logo.png",
+    "description": "ADS TECH conçoit des plateformes numériques intelligentes pour l'Afrique de l'Ouest. Intelligence Artificielle, ERP Scolaire (ADSClass) et Gestion Hôtelière (Hotel-PMS).",
+    "foundingLocation": {"@type": "Place", "name": "Niamey, Niger"},
+    "areaServed": ["Niger", "Afrique de l'Ouest", "Maroc"],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+212627616719",
+      "email": "djibo.abderrahmane@hec.ac.ma",
+      "contactType": "customer service",
+      "availableLanguage": ["French", "English", "Arabic"]
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Abdourahmane DJIBO SALOU",
+      "jobTitle": "Promoteur & PDG",
+      "knowsAbout": ["Intelligence Artificielle", "Développement Logiciel", "ERP", "SaaS"]
+    },
+    "sameAs": []
+  }
+  </script>
+  <!-- ══════════════════════════════════════════════════ -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="shared.css">
 <style>
-/* ══ HERO ════════════════════════════════════════════════════════════ */
+/* ══ HERO v2 — ULTRA PREMIUM ════════════════════════════════════════ */
 .hero {
   min-height: 100svh;
   background: var(--navy);
   display: flex; flex-direction: column; justify-content: center;
   position: relative; overflow: hidden; padding: 0 40px;
 }
+
+/* layered atmospheric bg */
 .hero-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 90% 70% at 65% 40%, rgba(14,123,114,.13) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 60% at 10% 90%, rgba(27,79,216,.09) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 50% at 90% 15%, rgba(201,168,76,.06) 0%, transparent 50%);
+    radial-gradient(ellipse 80% 80% at 70% 35%, rgba(14,123,114,.16) 0%, transparent 50%),
+    radial-gradient(ellipse 55% 60% at 8% 85%,  rgba(27,79,216,.10) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 55% at 92% 12%, rgba(201,168,76,.07) 0%, transparent 52%),
+    radial-gradient(ellipse 30% 30% at 50% 50%, rgba(14,123,114,.04) 0%, transparent 60%);
 }
+
+/* fine grid */
 .hero-grid-lines {
-  position: absolute; inset: 0; opacity:.028;
+  position: absolute; inset: 0; opacity: .022;
   background-image:
     linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
-  background-size: 72px 72px;
+  background-size: 80px 80px;
 }
+
+/* dot accent layer */
+.hero-dots {
+  position: absolute; inset: 0; opacity: .025;
+  background-image: radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* animated orb */
+.hero-orb {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  top: -100px; right: -60px;
+  background: radial-gradient(circle, rgba(14,123,114,.12) 0%, rgba(201,168,76,.04) 40%, transparent 70%);
+  animation: orb-drift 12s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes orb-drift {
+  0%   { transform: translate(0,0) scale(1); }
+  33%  { transform: translate(-30px, 20px) scale(1.05); }
+  66%  { transform: translate(20px, -15px) scale(.97); }
+  100% { transform: translate(-10px, 30px) scale(1.03); }
+}
+
 .hero-inner {
   max-width: 1320px; margin: 0 auto; width: 100%;
-  display: grid; grid-template-columns: 1.05fr .95fr;
-  gap: 60px; align-items: center; padding-top: 70px;
+  display: grid; grid-template-columns: 1fr 1.08fr;
+  gap: 56px; align-items: center; padding-top: 70px; position: relative; z-index: 2;
 }
-/* left */
+
+/* ── LEFT ─────────────────────────────────────────────────────────── */
 .hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--mono); font-size: 10.5px; letter-spacing: .2em;
-  color: var(--gold); text-transform: uppercase; margin-bottom: 32px;
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: .22em;
+  color: var(--gold); text-transform: uppercase; margin-bottom: 36px;
 }
 .hero-eyebrow-dot {
-  width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+  width: 7px; height: 7px; border-radius: 50%; background: var(--gold);
+  box-shadow: 0 0 0 0 rgba(201,168,76,.5);
   animation: pulse-dot 2.4s ease-in-out infinite;
 }
 @keyframes pulse-dot {
   0%,100% { box-shadow: 0 0 0 0 rgba(201,168,76,.5); }
-  50%      { box-shadow: 0 0 0 7px rgba(201,168,76,0); }
+  50%      { box-shadow: 0 0 0 8px rgba(201,168,76,0); }
 }
+.hero-eyebrow-line { width: 36px; height: 1px; background: linear-gradient(90deg, var(--gold), transparent); }
+
 .hero-title {
-  font-family: var(--serif); font-size: clamp(56px, 6.2vw, 96px);
-  font-weight: 300; line-height: 1.02; color: var(--cream);
-  margin-bottom: 28px; letter-spacing: -.5px;
+  font-family: var(--serif);
+  font-size: clamp(60px, 6.8vw, 106px);
+  font-weight: 300; line-height: .99; color: var(--cream);
+  margin-bottom: 32px; letter-spacing: -.8px;
 }
-.hero-title em { font-style: italic; color: var(--gold); }
-.hero-title .line-accent {
+.hero-title em {
+  font-style: italic; color: var(--gold);
+  background: linear-gradient(135deg, var(--gold) 0%, #e8c97a 60%, var(--gold) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-title .line-u {
   display: block; position: relative; width: fit-content;
 }
-.hero-title .line-accent::after {
-  content: ''; position: absolute; bottom: 4px; left: 0; right: 0;
-  height: 2px; background: linear-gradient(90deg, var(--gold), transparent);
-  opacity: .5;
+.hero-title .line-u::after {
+  content: ''; position: absolute; bottom: 6px; left: 0; right: 0;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(201,168,76,.6), transparent);
 }
+
 .hero-desc {
-  font-size: 15.5px; line-height: 1.82; color: rgba(255,255,255,.52);
-  max-width: 500px; margin-bottom: 48px;
+  font-size: 16px; line-height: 1.84; color: rgba(255,255,255,.48);
+  max-width: 480px; margin-bottom: 52px; font-weight: 300;
 }
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
-.hero-actions .btn-text {
-  font-family: var(--mono); font-size: 11px; letter-spacing: .15em;
-  color: rgba(255,255,255,.4); text-transform: uppercase;
-  display: flex; align-items: center; gap: 8px; transition: color .2s;
+.hero-desc strong { color: rgba(255,255,255,.72); font-weight: 500; }
+
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+.hero-btn-secondary {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: .18em;
+  color: rgba(255,255,255,.38); text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px; transition: color .25s;
+  text-decoration: none;
 }
-.hero-actions .btn-text:hover { color: var(--gold); }
-/* right */
-.hero-visual { position: relative; }
+.hero-btn-secondary::before { content:''; width:36px; height:1px; background:rgba(255,255,255,.18); transition:width .25s,background .25s; }
+.hero-btn-secondary:hover { color: var(--gold); }
+.hero-btn-secondary:hover::before { width:48px; background:var(--gold); }
+
+/* trust row */
+.hero-trust {
+  display: flex; align-items: center; gap: 20px;
+  margin-top: 52px; padding-top: 36px;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+.hero-trust-label {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .15em;
+  color: rgba(255,255,255,.22); text-transform: uppercase; flex-shrink: 0;
+}
+.hero-trust-items { display: flex; gap: 8px; flex-wrap: wrap; }
+.hero-trust-chip {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .05em;
+  color: rgba(255,255,255,.3); padding: 5px 12px; border-radius: 100px;
+  border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03);
+  transition: border-color .2s, color .2s;
+}
+.hero-trust-chip:hover { border-color: rgba(201,168,76,.3); color: var(--gold); }
+
+/* ── RIGHT — DASHBOARD CARD ───────────────────────────────────────── */
+.hero-visual { position: relative; padding: 36px 0 36px 0; }
+
+/* glow behind card */
+.hero-visual::before {
+  content: ''; position: absolute; inset: -40px; border-radius: 40px;
+  background: radial-gradient(ellipse 70% 60% at 55% 50%, rgba(14,123,114,.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+
 .hero-card-main {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 24px; padding: 0;
-  backdrop-filter: blur(20px);
-  overflow: hidden; box-shadow: var(--shadow-xl);
+  background: rgba(15,25,45,.75);
+  border: 1px solid rgba(255,255,255,.11);
+  border-radius: 22px;
+  backdrop-filter: blur(32px) saturate(140%);
+  overflow: hidden;
+  box-shadow:
+    0 40px 100px rgba(0,0,0,.55),
+    inset 0 1px 0 rgba(255,255,255,.08),
+    0 0 0 1px rgba(255,255,255,.04);
+  transition: transform .4s cubic-bezier(.4,0,.2,1), box-shadow .4s;
 }
+.hero-card-main:hover {
+  transform: translateY(-4px) rotate(.3deg);
+  box-shadow:
+    0 56px 120px rgba(0,0,0,.6),
+    inset 0 1px 0 rgba(255,255,255,.1),
+    0 0 0 1px rgba(255,255,255,.06);
+}
+
+/* titlebar */
 .hcm-top {
-  padding: 18px 24px;
-  background: rgba(255,255,255,.035);
+  padding: 14px 20px;
+  background: rgba(255,255,255,.04);
   border-bottom: 1px solid rgba(255,255,255,.07);
   display: flex; align-items: center; gap: 8px;
 }
 .hcm-dot { width: 10px; height: 10px; border-radius: 50%; }
-.hcm-title { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,.3); margin-left: 10px; }
-.hcm-body { padding: 28px; }
+.hcm-title {
+  font-family: var(--mono); font-size: 10.5px;
+  color: rgba(255,255,255,.28); margin-left: 10px; flex: 1;
+}
+.hcm-status {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 9.5px; color: #34d399;
+}
+.hcm-status-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #10b981;
+  animation: pulse-dot 2s infinite;
+}
+
+/* metrics bar */
 .metric-row {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 1px;
-  background: rgba(255,255,255,.06); border-radius: 14px; overflow: hidden;
-  margin-bottom: 24px;
+  background: rgba(255,255,255,.07); margin: 0;
 }
 .metric-cell {
-  background: rgba(255,255,255,.03); padding: 22px 16px; text-align: center;
+  background: rgba(255,255,255,.03); padding: 20px 14px; text-align: center;
+  transition: background .2s;
 }
+.metric-cell:hover { background: rgba(255,255,255,.06); }
 .metric-num {
-  font-family: var(--serif); font-size: 34px; font-weight: 400;
+  font-family: var(--serif); font-size: 32px; font-weight: 400;
   color: var(--gold); line-height: 1;
 }
 .metric-lbl {
-  font-size: 10px; color: rgba(255,255,255,.3);
-  text-transform: uppercase; letter-spacing: .1em; margin-top: 6px;
+  font-size: 9px; color: rgba(255,255,255,.28);
+  text-transform: uppercase; letter-spacing: .12em; margin-top: 6px;
 }
-.activity-list { display: flex; flex-direction: column; gap: 10px; }
+.metric-delta {
+  font-family: var(--mono); font-size: 9px; color: #34d399;
+  margin-top: 4px;
+}
+
+/* body */
+.hcm-body { padding: 18px 20px 20px; }
+
+/* section label */
+.hcm-section-label {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .18em;
+  color: rgba(255,255,255,.2); text-transform: uppercase;
+  margin-bottom: 10px; padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+
+.activity-list { display: flex; flex-direction: column; gap: 8px; }
 .activity-item {
-  display: flex; align-items: center; gap: 14px;
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
-  border-radius: 12px; padding: 14px 18px;
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 11px; padding: 12px 14px;
+  transition: background .22s, border-color .22s, transform .22s;
+}
+.activity-item:hover {
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.12);
+  transform: translateX(3px);
+}
+.ai-icon {
+  width: 34px; height: 34px; border-radius: 9px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 15px;
+}
+.ai-icon.teal { background: rgba(14,123,114,.22); border: 1px solid rgba(14,123,114,.32); }
+.ai-icon.gold { background: rgba(201,168,76,.16); border: 1px solid rgba(201,168,76,.26); }
+.ai-icon.blue { background: rgba(27,79,216,.18); border: 1px solid rgba(27,79,216,.28); }
+.ai-info { flex: 1; min-width: 0; }
+.ai-name { font-size: 12.5px; color: var(--cream); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ai-sub  { font-size: 10.5px; color: rgba(255,255,255,.28); margin-top: 2px; }
+.ai-badge {
+  font-family: var(--mono); font-size: 9px; padding: 3px 9px;
+  border-radius: 100px; white-space: nowrap; letter-spacing: .05em;
+}
+.ai-badge.green  { background: rgba(16,185,129,.14); color: #34d399; border: 1px solid rgba(16,185,129,.22); }
+.ai-badge.gold   { background: rgba(201,168,76,.14); color: var(--gold); border: 1px solid rgba(201,168,76,.22); }
+.ai-badge.teal-b { background: rgba(14,123,114,.14); color: #5eead4; border: 1px solid rgba(14,123,114,.22); }
+
+/* mini chart bar */
+.mini-chart {
+  display: flex; align-items: flex-end; gap: 4px;
+  height: 36px; margin-top: 14px; padding: 10px 14px;
+  background: rgba(255,255,255,.03); border-radius: 9px;
+  border: 1px solid rgba(255,255,255,.05);
+}
+.mc-bar {
+  flex: 1; border-radius: 3px 3px 0 0;
+  background: rgba(14,123,114,.35);
   transition: background .2s;
 }
-.activity-item:hover { background: rgba(255,255,255,.07); }
-.ai-icon {
-  width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center; font-size: 16px;
-}
-.ai-icon.teal { background: rgba(14,123,114,.2); border: 1px solid rgba(14,123,114,.3); }
-.ai-icon.gold { background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.25); }
-.ai-info { flex: 1; min-width: 0; }
-.ai-name { font-size: 13px; color: var(--cream); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ai-sub  { font-size: 11px; color: rgba(255,255,255,.3); margin-top: 2px; }
-.ai-badge {
-  font-family: var(--mono); font-size: 9.5px; padding: 4px 10px;
-  border-radius: 100px; white-space: nowrap;
-}
-.ai-badge.green { background: rgba(16,185,129,.15); color: #34d399; border: 1px solid rgba(16,185,129,.25); }
-.ai-badge.gold  { background: rgba(201,168,76,.15);  color: var(--gold); border: 1px solid rgba(201,168,76,.25); }
-/* floating cards */
+.mc-bar:hover { background: rgba(14,123,114,.65); }
+.mc-bar.high { background: rgba(201,168,76,.5); }
+.mc-bar.high:hover { background: rgba(201,168,76,.8); }
+
+/* ── FLOATING CARDS ───────────────────────────────────────────────── */
 .hero-card-float {
-  position: absolute; background: rgba(8,15,26,.88);
-  border: 1px solid rgba(255,255,255,.1); border-radius: 16px;
-  padding: 16px 20px; backdrop-filter: blur(20px);
-  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+  position: absolute;
+  background: rgba(10,20,38,.92);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px; padding: 16px 22px;
+  backdrop-filter: blur(28px) saturate(160%);
+  box-shadow: 0 24px 64px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.07);
 }
-.hero-card-float.f1 { top: -28px; right: -20px; }
-.hero-card-float.f2 { bottom: -24px; left: -24px; }
-.hcf-label { font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; color: rgba(255,255,255,.3); text-transform: uppercase; margin-bottom: 6px; }
-.hcf-val { font-family: var(--serif); font-size: 26px; color: var(--gold); }
-.hcf-sub { font-size: 11px; color: rgba(255,255,255,.35); margin-top: 3px; }
-/* scroll indicator */
+.hero-card-float.f1 {
+  top: -24px; right: -22px;
+  animation: float1 6s ease-in-out infinite;
+}
+.hero-card-float.f2 {
+  bottom: -20px; left: -28px;
+  animation: float2 7s ease-in-out infinite;
+}
+@keyframes float1 {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-8px) rotate(.5deg); }
+}
+@keyframes float2 {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(6px) rotate(-.4deg); }
+}
+.hcf-label {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .18em;
+  color: rgba(255,255,255,.28); text-transform: uppercase; margin-bottom: 6px;
+}
+.hcf-val { font-family: var(--serif); font-size: 28px; color: var(--gold); line-height: 1; }
+.hcf-sub { font-size: 11px; color: rgba(255,255,255,.32); margin-top: 4px; }
+.hcf-trend {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: var(--mono); font-size: 9.5px; color: #34d399;
+  margin-top: 6px;
+}
+
+/* ── SCROLL INDICATOR ─────────────────────────────────────────────── */
 .hero-scroll {
-  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 8px;
-  font-family: var(--mono); font-size: 9.5px; letter-spacing: .15em;
-  color: rgba(255,255,255,.25); text-transform: uppercase;
-  animation: fadeIn 1s 1.2s both;
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: .2em;
+  color: rgba(255,255,255,.2); text-transform: uppercase;
+  animation: fadeIn 1s 1.4s both;
 }
 .hero-scroll-line {
-  width: 1px; height: 40px;
+  width: 1px; height: 44px;
   background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
-  animation: scroll-line 2s ease-in-out infinite;
+  animation: scroll-line 2.2s ease-in-out infinite;
 }
 @keyframes scroll-line {
-  0%,100% { opacity: .3; transform: scaleY(1); }
-  50%      { opacity: 1;  transform: scaleY(.6); }
+  0%,100% { opacity: .25; transform: scaleY(1) translateY(0); }
+  50%      { opacity: .9;  transform: scaleY(.55) translateY(10px); }
 }
 
 /* ══ MARQUEE ═════════════════════════════════════════════════════════ */
@@ -304,6 +538,43 @@
   .services-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 48px; }
 }
+
+/* ── LOGO STYLES ─────────────────────────────────────────────────── */
+.nav-logo-img {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; margin-right: 56px; flex-shrink: 0;
+}
+.nav-logo-img-el {
+  height: 38px; width: auto;
+  filter: brightness(1.1) drop-shadow(0 0 8px rgba(201,168,76,.25));
+  transition: filter .25s, transform .25s;
+}
+.nav-logo-img:hover .nav-logo-img-el {
+  filter: brightness(1.2) drop-shadow(0 0 14px rgba(201,168,76,.5));
+  transform: scale(1.04);
+}
+.nav-logo-text {
+  font-family: var(--serif); font-size: 21px; font-weight: 500;
+  color: var(--cream); letter-spacing: 2.5px;
+}
+.nav-logo-text em { font-style: normal; color: var(--gold); }
+
+.footer-brand-logo {
+  display: flex; align-items: center; gap: 14px;
+}
+.footer-logo-img {
+  height: 44px; width: auto;
+  filter: brightness(.9) saturate(.85);
+  transition: filter .25s;
+}
+.footer-brand-logo:hover .footer-logo-img {
+  filter: brightness(1.05) saturate(1);
+}
+.footer-brand-logo span {
+  font-family: var(--serif); font-size: 22px; color: var(--cream); letter-spacing: 2px;
+}
+.footer-brand-logo span em { font-style: normal; color: var(--gold); }
+
 </style>
 </head>
 <body>
@@ -311,7 +582,10 @@
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-wrap">
-    <a href="index.html" class="nav-logo">ĀDS <em>TECH</em></a>
+    <a href="index.html" class="nav-logo nav-logo-img">
+      <img src="logo.png" alt="ADS TECH — Intelligence Artificielle &amp; Solutions Numériques" class="nav-logo-img-el">
+      <span class="nav-logo-text">ĀDS <em>TECH</em></span>
+    </a>
     <div class="nav-links">
       <a href="index.html" class="active">Accueil</a>
       <a href="produits.html">Produits</a>
@@ -338,90 +612,156 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid-lines"></div>
+  <div class="hero-dots"></div>
+  <div class="hero-orb"></div>
   <div class="hero-inner">
+
+    <!-- LEFT -->
     <div class="anim-up">
       <div class="hero-eyebrow">
         <div class="hero-eyebrow-dot"></div>
+        <div class="hero-eyebrow-line"></div>
         Solutions Numériques & Intelligence Artificielle
       </div>
       <h1 class="hero-title">
         L'intelligence<br>
         <em>artificielle</em><br>
-        <span class="line-accent">au service</span><br>
+        <span class="line-u">au service</span><br>
         de l'Afrique
       </h1>
-      <p class="hero-desc">ADS TECH conçoit des plateformes numériques intelligentes pour digitaliser l'éducation et l'hôtellerie en Afrique de l'Ouest — des solutions souveraines bâties pour durer.</p>
+      <p class="hero-desc">
+        ADS TECH conçoit des plateformes numériques intelligentes pour digitaliser
+        l'éducation et l'hôtellerie en Afrique de l'Ouest —
+        <strong>des solutions souveraines bâties pour durer.</strong>
+      </p>
       <div class="hero-actions">
         <a href="produits.html" class="btn btn-gold btn-lg">Découvrir nos produits →</a>
-        <a href="contact.html" class="btn-text">
-          <span style="width:32px;height:1px;background:rgba(255,255,255,.2)"></span>
-          Nous contacter
-        </a>
+        <a href="contact.html" class="hero-btn-secondary">Nous contacter</a>
+      </div>
+      <div class="hero-trust">
+        <span class="hero-trust-label">Conçu avec</span>
+        <div class="hero-trust-items">
+          <span class="hero-trust-chip">IA Souveraine</span>
+          <span class="hero-trust-chip">SaaS Multi-tenant</span>
+          <span class="hero-trust-chip">RAG Pipeline</span>
+          <span class="hero-trust-chip">Cloud Sécurisé</span>
+        </div>
       </div>
     </div>
+
+    <!-- RIGHT — Dashboard -->
     <div class="hero-visual anim-up-2">
+
+      <!-- Float card top-right -->
       <div class="hero-card-float f1">
-        <div class="hcf-label">Disponibilité</div>
-        <div class="hcf-val">99.5<span style="font-size:16px">%</span></div>
-        <div class="hcf-sub">Uptime garanti SLA</div>
+        <div class="hcf-label">Disponibilité SLA</div>
+        <div class="hcf-val">99.5<span style="font-size:14px;opacity:.7">%</span></div>
+        <div class="hcf-sub">Uptime garanti — OVHcloud</div>
+        <div class="hcf-trend">↑ +0.2% ce mois</div>
       </div>
+
+      <!-- Main dashboard card -->
       <div class="hero-card-main">
+        <!-- Titlebar -->
         <div class="hcm-top">
           <div class="hcm-dot" style="background:#ef4444"></div>
           <div class="hcm-dot" style="background:#f59e0b"></div>
           <div class="hcm-dot" style="background:#10b981"></div>
           <span class="hcm-title">ADSClass — Tableau de bord</span>
-        </div>
-        <div class="hcm-body">
-          <div class="metric-row">
-            <div class="metric-cell">
-              <div class="metric-num" data-count="342" data-suffix="">—</div>
-              <div class="metric-lbl">Étudiants actifs</div>
-            </div>
-            <div class="metric-cell">
-              <div class="metric-num" data-count="18" data-suffix="">—</div>
-              <div class="metric-lbl">Cours indexés IA</div>
-            </div>
-            <div class="metric-cell">
-              <div class="metric-num" data-count="247" data-suffix="">—</div>
-              <div class="metric-lbl">Requêtes IA / jour</div>
-            </div>
+          <div class="hcm-status">
+            <div class="hcm-status-dot"></div>
+            Live
           </div>
+        </div>
+
+        <!-- Metrics -->
+        <div class="metric-row">
+          <div class="metric-cell">
+            <div class="metric-num" data-count="342" data-suffix="">—</div>
+            <div class="metric-lbl">Étudiants actifs</div>
+            <div class="metric-delta">↑ +24 cette semaine</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-num" data-count="18" data-suffix="">—</div>
+            <div class="metric-lbl">Cours indexés IA</div>
+            <div class="metric-delta">↑ +3 ce mois</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-num" data-count="247" data-suffix="">—</div>
+            <div class="metric-lbl">Requêtes IA / jour</div>
+            <div class="metric-delta">↑ +18% vs hier</div>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="hcm-body">
+          <div class="hcm-section-label">Activité en temps réel</div>
           <div class="activity-list">
             <div class="activity-item">
-              <div class="ai-icon teal">🎓</div>
+              <div class="ai-icon teal">🤖</div>
               <div class="ai-info">
-                <div class="ai-name">Chatbot IA pédagogique</div>
-                <div class="ai-sub">Dernière réponse : il y a 3 min</div>
+                <div class="ai-name">Chatbot IA pédagogique — RAG</div>
+                <div class="ai-sub">247 questions répondues · 3 min</div>
               </div>
               <div class="ai-badge green">En ligne</div>
             </div>
             <div class="activity-item">
-              <div class="ai-icon gold">💰</div>
+              <div class="ai-icon gold">💳</div>
               <div class="ai-info">
-                <div class="ai-name">Paiements traités</div>
-                <div class="ai-sub">Module finance synchronisé</div>
+                <div class="ai-name">Paiements synchronisés</div>
+                <div class="ai-sub">Module finance · Orange Money</div>
               </div>
               <div class="ai-badge gold">Sync</div>
             </div>
             <div class="activity-item">
-              <div class="ai-icon teal">📊</div>
+              <div class="ai-icon teal">📚</div>
+              <div class="ai-info">
+                <div class="ai-name">18 cours PDF indexés</div>
+                <div class="ai-sub">Base de connaissances IA à jour</div>
+              </div>
+              <div class="ai-badge teal-b">Indexé</div>
+            </div>
+            <div class="activity-item">
+              <div class="ai-icon blue">📊</div>
               <div class="ai-info">
                 <div class="ai-name">Rapport mensuel généré</div>
-                <div class="ai-sub">Export PDF disponible</div>
+                <div class="ai-sub">Analytiques · Export PDF prêt</div>
               </div>
               <div class="ai-badge green">Prêt</div>
             </div>
           </div>
+
+          <!-- Mini activity chart -->
+          <div class="mini-chart">
+            <div class="mc-bar" style="height:40%"></div>
+            <div class="mc-bar" style="height:55%"></div>
+            <div class="mc-bar" style="height:45%"></div>
+            <div class="mc-bar high" style="height:80%"></div>
+            <div class="mc-bar" style="height:65%"></div>
+            <div class="mc-bar high" style="height:90%"></div>
+            <div class="mc-bar" style="height:72%"></div>
+            <div class="mc-bar high" style="height:100%"></div>
+            <div class="mc-bar" style="height:85%"></div>
+            <div class="mc-bar" style="height:60%"></div>
+            <div class="mc-bar high" style="height:95%"></div>
+            <div class="mc-bar" style="height:78%"></div>
+            <div class="mc-bar high" style="height:88%"></div>
+            <div class="mc-bar" style="height:70%"></div>
+          </div>
         </div>
       </div>
+
+      <!-- Float card bottom-left -->
       <div class="hero-card-float f2">
         <div class="hcf-label">Produits SaaS</div>
-        <div class="hcf-val">2+</div>
-        <div class="hcf-sub">Plateformes actives</div>
+        <div class="hcf-val">2<span style="font-family:var(--sans);font-size:16px;opacity:.6">+</span></div>
+        <div class="hcf-sub">Plateformes intelligentes actives</div>
+        <div class="hcf-trend">🌍 Niger · Afrique de l'Ouest</div>
       </div>
+
     </div>
   </div>
+
   <div class="hero-scroll">
     <span>Découvrir</span>
     <div class="hero-scroll-line"></div>
@@ -575,7 +915,10 @@
 <footer class="footer">
   <div class="footer-grid">
     <div class="footer-brand">
-      <div class="footer-brand-name">ĀDS <em>TECH</em></div>
+      <div class="footer-brand-name footer-brand-logo">
+        <img src="logo.png" alt="ADS TECH" class="footer-logo-img">
+        <span>ĀDS <em>TECH</em></span>
+      </div>
       <p>Solutions Numériques &amp; Intelligence Artificielle — Niamey, Niger — Afrique de l'Ouest</p>
     </div>
     <div class="footer-col">
@@ -594,7 +937,7 @@
     <div class="footer-col">
       <div class="footer-col-title">Contact</div>
       <a href="tel:+212627616719">+212 627 616 719</a>
-      <a href="mailto:contact@adstech.com">contact@adstech.com</a>
+      <a href="mailto:djibo.abderrahmane@hec.ac.ma">djibo.abderrahmane@hec.ac.ma</a>
       <a>Niamey, Niger</a>
     </div>
   </div>

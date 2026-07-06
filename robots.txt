@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.adstech.net/sitemap.xml
+
+# Block irrelevant bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+User-agent: SemrushBot
+Crawl-delay: 10
