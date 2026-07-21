@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.adstech.net/sitemap.xml
+Sitemap: https://www.adsonehub.com/sitemap.xml
 
 # Block irrelevant bots
 User-agent: AhrefsBot

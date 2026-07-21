@@ -1,0 +1,21 @@
+{
+  "name": "ADS ONEHUB — Intelligence Artificielle & Solutions Numériques",
+  "short_name": "ADS ONEHUB",
+  "description": "ADS ONEHUB conçoit des plateformes numériques intelligentes pour l'Afrique de l'Ouest : ADSClass (ERP scolaire IA) et Hotel-PMS.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#080F1A",
+  "theme_color": "#080F1A",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["business", "education", "productivity"],
+  "icons": [
+    { "src": "favicon-16.png", "sizes": "16x16", "type": "image/png" },
+    { "src": "favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "favicon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
