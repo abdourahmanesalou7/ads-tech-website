@@ -545,7 +545,6 @@
 
       <input type="hidden" name="from_name" value="ADS ONEHUB — Formulaire de contact">
 
-      <input type="hidden" name="redirect" value="">
 
       <!-- Projet sélectionné -->
       <input type="hidden" name="project" id="projectField" value="ADSClass">
@@ -1070,10 +1069,9 @@
         error
       );
 
-      formError.innerHTML =
-        '❌ <strong>Votre message n’a pas pu être envoyé.</strong><br>' +
-        'Veuillez réessayer dans quelques instants ou nous contacter directement ' +
-        'par WhatsApp au <strong>+212 627 616 719</strong>.';
+     formError.innerHTML =
+       '❌ <strong>Votre message n’a pas pu être envoyé.</strong><br>' +
+       (error.message || 'Erreur inconnue.');
 
       formError.style.display = 'block';
 
