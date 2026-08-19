@@ -1114,5 +1114,37 @@
   });
 })();
 </script>
+<script>
+function toggleFaq(button) {
+  const body = button.nextElementSibling;
+  const chevron = button.querySelector('.faq-chevron');
+
+  // Fermer les autres questions
+  document.querySelectorAll('.faq-body.open').forEach(function(otherBody) {
+    if (otherBody !== body) {
+      otherBody.classList.remove('open');
+
+      const otherButton = otherBody.previousElementSibling;
+      const otherChevron = otherButton
+        ? otherButton.querySelector('.faq-chevron')
+        : null;
+
+      if (otherChevron) {
+        otherChevron.style.transform = 'rotate(0deg)';
+      }
+    }
+  });
+
+  // Ouvrir / fermer la question sélectionnée
+  const isOpen = body.classList.toggle('open');
+
+  // Faire tourner la flèche
+  if (chevron) {
+    chevron.style.transform = isOpen
+      ? 'rotate(180deg)'
+      : 'rotate(0deg)';
+  }
+}
+</script>
 </body>
 </html>
