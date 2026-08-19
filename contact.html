@@ -520,82 +520,337 @@
       </div>
     </div>
 
-    <!-- RIGHT — FORM -->
-    <div class="contact-form-wrap">
-      <div id="formView">
-        <div class="form-heading">Envoyez-nous<br>un <em>message</em></div>
-        <p class="form-sub">Pour une réponse immédiate, contactez-nous via WhatsApp au <strong style="color:var(--navy)">+212 627 616 719</strong>. Sinon, remplissez ce formulaire.</p>
+ <!-- RIGHT — FORM -->
+<div class="contact-form-wrap">
 
-        <!-- Project type -->
-        <div class="form-label" style="margin-bottom:12px">Votre demande concerne</div>
-        <div class="project-chips" id="projectChips">
-          <label class="pchip selected">
-            <input type="radio" name="project" value="adsclass" checked>
-            <span class="pchip-icon">🎓</span>
-            <div><div class="pchip-name" data-reveal>ADSClass</div><div class="pchip-sub" data-reveal>Plateforme éducative</div></div>
+  <!-- FORM VIEW -->
+  <div id="formView">
+
+    <div class="form-heading">
+      Envoyez-nous<br>un <em>message</em>
+    </div>
+
+    <p class="form-sub">
+      Pour une réponse immédiate, contactez-nous via WhatsApp au
+      <strong style="color:var(--navy)">+212 627 616 719</strong>.
+      Sinon, remplissez ce formulaire.
+    </p>
+
+    <form id="contactForm">
+
+      <!-- Web3Forms -->
+      <input type="hidden" name="access_key" value="882ee714-1ae0-49e6-b98a-2fcf5d47a9af">
+
+      <input type="hidden" name="subject" value="Nouveau message — ADS ONEHUB">
+
+      <input type="hidden" name="from_name" value="ADS ONEHUB — Formulaire de contact">
+
+      <input type="hidden" name="redirect" value="">
+
+      <!-- Projet sélectionné -->
+      <input type="hidden" name="project" id="projectField" value="ADSClass">
+
+      <!-- Project type -->
+      <div class="form-label" style="margin-bottom:12px">
+        Votre demande concerne
+      </div>
+
+      <div class="project-chips" id="projectChips">
+
+        <label class="pchip selected">
+          <input
+            type="radio"
+            name="project_choice"
+            value="adsclass"
+            checked
+          >
+
+          <span class="pchip-icon">🎓</span>
+
+          <div>
+            <div class="pchip-name">ADSClass</div>
+            <div class="pchip-sub">Plateforme éducative</div>
+          </div>
+        </label>
+
+        <label class="pchip">
+          <input
+            type="radio"
+            name="project_choice"
+            value="hotel"
+          >
+
+          <span class="pchip-icon">🏨</span>
+
+          <div>
+            <div class="pchip-name">Hotel-PMS</div>
+            <div class="pchip-sub">Gestion hôtelière</div>
+          </div>
+        </label>
+
+        <label class="pchip">
+          <input
+            type="radio"
+            name="project_choice"
+            value="custom"
+          >
+
+          <span class="pchip-icon">⚙️</span>
+
+          <div>
+            <div class="pchip-name">Projet sur mesure</div>
+            <div class="pchip-sub">Développement &amp; IA</div>
+          </div>
+        </label>
+
+        <label class="pchip">
+          <input
+            type="radio"
+            name="project_choice"
+            value="other"
+          >
+
+          <span class="pchip-icon">💬</span>
+
+          <div>
+            <div class="pchip-name">Autre</div>
+            <div class="pchip-sub">Question générale</div>
+          </div>
+        </label>
+
+      </div>
+
+
+      <!-- Nom / Prénom -->
+      <div class="form-row">
+
+        <div class="form-group">
+          <label class="form-label" for="firstName">
+            Prénom *
           </label>
-          <label class="pchip">
-            <input type="radio" name="project" value="hotel">
-            <span class="pchip-icon">🏨</span>
-            <div><div class="pchip-name" data-reveal>Hotel-PMS</div><div class="pchip-sub" data-reveal>Gestion hôtelière</div></div>
-          </label>
-          <label class="pchip">
-            <input type="radio" name="project" value="custom">
-            <span class="pchip-icon">⚙️</span>
-            <div><div class="pchip-name" data-reveal>Projet sur mesure</div><div class="pchip-sub" data-reveal>Développement &amp; IA</div></div>
-          </label>
-          <label class="pchip">
-            <input type="radio" name="project" value="other">
-            <span class="pchip-icon">💬</span>
-            <div><div class="pchip-name" data-reveal>Autre</div><div class="pchip-sub" data-reveal>Question générale</div></div>
-          </label>
+
+          <input
+            class="form-input"
+            type="text"
+            id="firstName"
+            name="first_name"
+            placeholder="Votre prénom"
+            autocomplete="given-name"
+            required
+          >
         </div>
 
-        <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Nom complet *</label>
-              <input class="form-input" type="text" placeholder="Votre nom" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Organisation</label>
-              <input class="form-input" type="text" placeholder="Établissement, entreprise…">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Email *</label>
-              <input class="form-input" type="email" placeholder="votre@email.com" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Téléphone</label>
-              <input class="form-input" type="tel" placeholder="+212 6xx xx xx xx">
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Pays / Ville</label>
-            <input class="form-input" type="text" placeholder="Ex. Niamey, Niger">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Votre message *</label>
-            <textarea class="form-textarea" placeholder="Décrivez votre projet, vos besoins ou vos questions…" required></textarea>
-          </div>
-          <button type="submit" class="form-submit">
-            <span>Envoyer le message</span>
-            <span style="font-size:16px">→</span>
-          </button>
-          <p class="form-note">Vos données restent strictement confidentielles et ne sont pas partagées avec des tiers.</p>
-        </form>
+        <div class="form-group">
+          <label class="form-label" for="lastName">
+            Nom *
+          </label>
+
+          <input
+            class="form-input"
+            type="text"
+            id="lastName"
+            name="last_name"
+            placeholder="Votre nom"
+            autocomplete="family-name"
+            required
+          >
+        </div>
+
       </div>
 
-      <!-- SUCCESS STATE -->
-      <div class="form-success" id="formSuccess">
-        <div class="fs-icon">✅</div>
-        <div class="fs-title">Message envoyé !</div>
-        <p class="fs-desc">Merci pour votre message. Abdourahmane vous répondra dans les 24 heures.<br><br>Pour une réponse immédiate :<br><strong style="color:var(--navy)">WhatsApp : +212 627 616 719</strong></p>
-        <a href="index.html" class="btn btn-gold">← Retour à l'accueil</a>
+
+      <!-- Email / Téléphone -->
+      <div class="form-row">
+
+        <div class="form-group">
+          <label class="form-label" for="email">
+            Email *
+          </label>
+
+          <input
+            class="form-input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="vous@entreprise.com"
+            autocomplete="email"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="phone">
+            Téléphone / WhatsApp
+          </label>
+
+          <input
+            class="form-input"
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="+227 ..."
+            autocomplete="tel"
+          >
+        </div>
+
       </div>
+
+
+      <!-- Organisation -->
+      <div class="form-group">
+
+        <label class="form-label" for="company">
+          Établissement / Entreprise
+        </label>
+
+        <input
+          class="form-input"
+          type="text"
+          id="company"
+          name="company"
+          placeholder="Nom de votre établissement ou entreprise"
+          autocomplete="organization"
+        >
+
+      </div>
+
+
+      <!-- Type de demande -->
+      <div class="form-group">
+
+        <label class="form-label" for="requestType">
+          Type de demande
+        </label>
+
+        <select
+          class="form-select"
+          id="requestType"
+          name="request_type"
+        >
+
+          <option value="">
+            Sélectionnez votre demande
+          </option>
+
+          <option value="Demande de démonstration">
+            Demande de démonstration
+          </option>
+
+          <option value="Demande de devis">
+            Demande de devis
+          </option>
+
+          <option value="Projet sur mesure">
+            Projet sur mesure
+          </option>
+
+          <option value="Support / Assistance">
+            Support / Assistance
+          </option>
+
+          <option value="Partenariat">
+            Partenariat
+          </option>
+
+          <option value="Autre">
+            Autre
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- Message -->
+      <div class="form-group">
+
+        <label class="form-label" for="message">
+          Votre message *
+        </label>
+
+        <textarea
+          class="form-textarea"
+          id="message"
+          name="message"
+          placeholder="Décrivez votre besoin, votre établissement, votre projet ou votre question..."
+          required
+        ></textarea>
+
+      </div>
+
+
+      <!-- Erreur -->
+      <div
+        id="formError"
+        style="
+          display:none;
+          margin-bottom:18px;
+          padding:14px 16px;
+          border-radius:var(--r-md);
+          background:rgba(239,68,68,.08);
+          border:1px solid rgba(239,68,68,.18);
+          color:#b91c1c;
+          font-size:13px;
+          line-height:1.6;
+        "
+      ></div>
+
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        class="form-submit"
+        id="contactSubmit"
+      >
+        <span id="submitText">
+          Envoyer le message
+        </span>
+
+        <span id="submitArrow">
+          →
+        </span>
+      </button>
+
+
+      <div class="form-note">
+        Vos informations restent confidentielles et sont utilisées
+        uniquement pour répondre à votre demande.
+      </div>
+
+    </form>
+
+  </div>
+
+
+  <!-- SUCCESS STATE -->
+  <div class="form-success" id="formSuccess">
+
+    <div class="fs-icon">✅</div>
+
+    <div class="fs-title">
+      Message envoyé !
     </div>
+
+    <p class="fs-desc">
+      Merci pour votre message.
+      Abdourahmane vous répondra dans les 24 heures.
+      <br><br>
+
+      Pour une réponse immédiate :
+      <br>
+
+      <strong style="color:var(--navy)">
+        WhatsApp : +212 627 616 719
+      </strong>
+    </p>
+
+    <a href="index.html" class="btn btn-gold">
+      ← Retour à l'accueil
+    </a>
+
+  </div>
+
+</div>
 
   </div>
 </section>
@@ -692,75 +947,149 @@
 
 <script src="shared.js"></script>
 <script>
-// Project type chips
-document.querySelectorAll('.pchip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('.pchip').forEach(c => c.classList.remove('selected'));
-    chip.classList.add('selected');
+/* ═══════════════════════════════════════════════════════
+   ADS ONEHUB — FORMULAIRE DE CONTACT
+   GitHub Pages + Web3Forms
+   ═══════════════════════════════════════════════════════ */
+
+(function () {
+
+  const form = document.getElementById('contactForm');
+  const submitButton = document.getElementById('contactSubmit');
+  const submitText = document.getElementById('submitText');
+  const submitArrow = document.getElementById('submitArrow');
+  const formError = document.getElementById('formError');
+  const projectField = document.getElementById('projectField');
+
+  if (!form) return;
+
+  /* ─────────────────────────────────────────────
+     Gestion des boutons ADSClass / Hotel-PMS...
+     ───────────────────────────────────────────── */
+
+  document.querySelectorAll('.pchip').forEach(chip => {
+
+    chip.addEventListener('click', function () {
+
+      document.querySelectorAll('.pchip')
+        .forEach(c => c.classList.remove('selected'));
+
+      this.classList.add('selected');
+
+      const radio = this.querySelector('input[type="radio"]');
+
+      if (radio) {
+        radio.checked = true;
+
+        const labels = {
+          adsclass: 'ADSClass',
+          hotel: 'Hotel-PMS',
+          custom: 'Projet sur mesure',
+          other: 'Autre'
+        };
+
+        projectField.value =
+          labels[radio.value] || radio.value;
+      }
+
+    });
+
   });
-});
-// Form submit
-function handleSubmit(e) {
-  e.preventDefault();
-  document.getElementById('formView').style.display = 'none';
-  const s = document.getElementById('formSuccess');
-  s.style.display = 'block';
-  s.scrollIntoView({ behavior:'smooth', block:'center' });
-}
-// FAQ accordion
-function toggleFaq(btn) {
-  const body = btn.nextElementSibling;
-  const chev = btn.querySelector('.faq-chevron');
-  const isOpen = body.classList.contains('open');
-  document.querySelectorAll('.faq-body').forEach(b => b.classList.remove('open'));
-  document.querySelectorAll('.faq-chevron').forEach(c => { c.style.transform = ''; });
-  if (!isOpen) {
-    body.classList.add('open');
-    chev.style.transform = 'rotate(180deg)';
-  }
-}
+
+
+  /* ─────────────────────────────────────────────
+     Soumission du formulaire
+     ───────────────────────────────────────────── */
+
+  form.addEventListener('submit', async function (e) {
+
+    e.preventDefault();
+
+    formError.style.display = 'none';
+    formError.textContent = '';
+
+    /* Validation navigateur */
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    /* État "envoi..." */
+    submitButton.disabled = true;
+    submitButton.style.opacity = '0.7';
+    submitButton.style.cursor = 'wait';
+
+    submitText.textContent = 'Envoi en cours…';
+    submitArrow.textContent = '⏳';
+
+    try {
+
+      const formData = new FormData(form);
+
+      const response = await fetch(
+        'https://api.web3forms.com/submit',
+        {
+          method: 'POST',
+          body: formData
+        }
+      );
+
+      const result = await response.json();
+
+      /* Succès */
+      if (result.success) {
+
+        document.getElementById('formView').style.display = 'none';
+
+        const success =
+          document.getElementById('formSuccess');
+
+        success.style.display = 'block';
+
+        success.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+
+        /* Nettoyage */
+        form.reset();
+
+        return;
+      }
+
+      /* Erreur retournée par Web3Forms */
+      throw new Error(
+        result.message ||
+        'Le service de messagerie a refusé la demande.'
+      );
+
+    } catch (error) {
+
+      console.error(
+        'ADS ONEHUB — Erreur formulaire :',
+        error
+      );
+
+      formError.innerHTML =
+        '❌ <strong>Votre message n’a pas pu être envoyé.</strong><br>' +
+        'Veuillez réessayer dans quelques instants ou nous contacter directement ' +
+        'par WhatsApp au <strong>+212 627 616 719</strong>.';
+
+      formError.style.display = 'block';
+
+      /* Restaurer le bouton */
+      submitButton.disabled = false;
+      submitButton.style.opacity = '1';
+      submitButton.style.cursor = 'pointer';
+
+      submitText.textContent = 'Envoyer le message';
+      submitArrow.textContent = '→';
+    }
+
+  });
+
+})();
 </script>
-<!-- ══ WHATSAPP FLOATING — ULTRA PREMIUM ══════════════════ -->
-<div class="wa-float" id="waFloat">
-
-  <!-- Tooltip popup -->
-  <div class="wa-tooltip">
-    <div class="wa-tooltip-label">Contact direct</div>
-    <div class="wa-tooltip-name">ADS ONEHUB</div>
-    <div class="wa-tooltip-status">
-      <div class="wa-tooltip-dot"></div>
-      Disponible maintenant
-    </div>
-    <div class="wa-tooltip-msg">
-      👋 Bonjour ! Discutons de votre projet numérique.
-    </div>
-    <a
-      href="https://wa.me/212627616719?text=Bonjour%20ADS%20ONEHUB%2C%20je%20souhaite%20discuter%20de%20votre%20solution%20et%20obtenir%20plus%20d%27informations."
-      target="_blank" rel="noopener"
-      class="wa-tooltip-cta"
-    >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-      </svg>
-      Démarrer la conversation
-    </a>
-  </div>
-
-  <!-- Main button -->
-  <a
-    href="https://wa.me/212627616719?text=Bonjour%20ADS%20ONEHUB%2C%20je%20souhaite%20discuter%20de%20votre%20solution%20et%20obtenir%20plus%20d%27informations."
-    target="_blank" rel="noopener"
-    class="wa-btn"
-    aria-label="Contacter ADS ONEHUB sur WhatsApp"
-  >
-    <div class="wa-badge">1</div>
-    <svg class="wa-icon" viewBox="0 0 24 24">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-    </svg>
-  </a>
-</div>
-<!-- ════════════════════════════════════════════════════════ -->
-<script>
 // ── WHATSAPP FLOAT ───────────────────────────────────────────────────
 (function(){
   const btn = document.querySelector('.wa-btn');
