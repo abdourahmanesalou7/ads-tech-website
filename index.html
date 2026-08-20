@@ -741,7 +741,16 @@
       <a href="contact.html" class="btn btn-outline-light btn-sm">Nous contacter</a>
       <a href="produits.html" class="btn btn-gold btn-sm">Voir nos produits →</a>
     </div>
-    <button class="nav-burger" onclick="toggleMenu()">☰</button>
+    <button
+      class="nav-burger"
+      id="navBurger"
+      type="button"
+      aria-controls="navMobile"
+      aria-expanded="false"
+      aria-label="Ouvrir le menu"
+    >
+      ☰
+    </button>
   </div>
   <div class="nav-mobile" id="navMobile">
     <a href="index.html">Accueil</a>
@@ -1091,6 +1100,67 @@
   </div>
 </footer>
 <script src="shared.js"></script>
+
+<!-- ══ NAVIGATION MOBILE ═══════════════════════════════════════ -->
+<script>
+(function () {
+  const burger = document.getElementById('navBurger');
+  const mobileMenu = document.getElementById('navMobile');
+
+  if (!burger || !mobileMenu) return;
+
+  function openMenu() {
+    burger.classList.add('active');
+    mobileMenu.classList.add('open');
+    burger.setAttribute('aria-expanded', 'true');
+    burger.setAttribute('aria-label', 'Fermer le menu');
+  }
+
+  function closeMenu() {
+    burger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.setAttribute('aria-label', 'Ouvrir le menu');
+  }
+
+  burger.addEventListener('click', function (event) {
+    event.stopPropagation();
+
+    if (mobileMenu.classList.contains('open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('click', function (event) {
+    if (
+      mobileMenu.classList.contains('open') &&
+      !mobileMenu.contains(event.target) &&
+      !burger.contains(event.target)
+    ) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 768) {
+      closeMenu();
+    }
+  });
+})();
+</script>
+
 <!-- ══ WHATSAPP FLOATING — ULTRA PREMIUM ══════════════════ -->
 <div class="wa-float" id="waFloat">
 
