@@ -311,27 +311,11 @@ a{
   }
 
   /*
-   * Le conteneur droit reste visible uniquement
-   * pour permettre l'affichage du hamburger.
+   * Le conteneur droit (boutons CTA desktop) est
+   * complètement masqué sur mobile. Seul le
+   * hamburger doit rester visible à droite du logo.
    */
   .nav-right{
-    display:flex !important;
-    align-items:center;
-    justify-content:flex-end;
-    gap:0;
-    margin-left:auto;
-  }
-
-  /*
-   * IMPORTANT :
-   * Tous les boutons desktop de la navigation sont masqués.
-   *
-   * Cela supprime notamment "Voir produits".
-   */
-  .nav-right .btn,
-  .nav-right .btn-outline-light,
-  .nav-right .btn-gold,
-  .nav-right > a{
     display:none !important;
   }
 
