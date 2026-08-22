@@ -954,7 +954,9 @@
   min-width: 200px;
 }
 
-.wa-float:hover .wa-tooltip,
+@media (hover: hover) and (pointer: fine) {
+  .wa-float:hover .wa-tooltip { opacity: 1; transform: translateX(0); pointer-events: auto; }
+}
 .wa-float.open .wa-tooltip {
   opacity: 1; transform: translateX(0); pointer-events: auto;
 }
