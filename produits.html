@@ -210,14 +210,84 @@
 .vision-quote em { font-style:normal; color:var(--gold); }
 .vision-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
 
+/* ── DÉMONSTRATION ADSCLASS ─────────────────────────────────────────── */
+.demo-section {
+  padding:110px 40px 120px;
+  background:linear-gradient(180deg, var(--navy) 0%, #0b1728 52%, var(--navy) 100%);
+  border-top:1px solid rgba(255,255,255,.05);
+  position:relative; overflow:hidden;
+}
+.demo-section::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 62% 52% at 50% 0%, rgba(14,123,114,.13) 0%, transparent 64%);
+}
+.demo-inner { max-width:1000px; margin:0 auto; position:relative; z-index:1; text-align:center; }
+.demo-label { font-family:var(--mono); font-size:10.5px; letter-spacing:.2em; color:var(--gold); text-transform:uppercase; margin-bottom:20px; display:flex; align-items:center; justify-content:center; gap:14px; }
+.demo-label::before,.demo-label::after { content:''; flex:1; max-width:56px; height:1px; background:var(--gold); opacity:.5; }
+.demo-title { font-family:var(--serif); font-size:clamp(32px,4vw,54px); font-weight:300; color:var(--cream); line-height:1.08; margin-bottom:18px; }
+.demo-title em { font-style:italic; color:var(--gold); }
+.demo-desc { font-size:14.5px; line-height:1.85; color:rgba(255,255,255,.48); max-width:660px; margin:0 auto 52px; }
+
+.demo-player {
+  position:relative; width:100%; aspect-ratio:16/9;
+  border-radius:var(--r-lg); overflow:hidden;
+  background:var(--navy-2);
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:var(--shadow-xl);
+}
+.demo-player::after {
+  content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(201,168,76,.14);
+}
+.demo-facade { position:absolute; inset:0; width:100%; height:100%; padding:0; border:none; background:none; cursor:pointer; display:block; }
+.demo-facade::before { content:''; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(8,15,26,.12) 0%, rgba(8,15,26,.58) 100%); }
+.demo-thumb { width:100%; height:100%; object-fit:cover; transition:transform .5s cubic-bezier(.4,0,.2,1), opacity .3s; }
+.demo-facade:hover .demo-thumb { transform:scale(1.03); opacity:.88; }
+.demo-play {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2;
+  width:82px; height:82px; border-radius:50%;
+  background:var(--gold); color:var(--navy);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 12px 40px rgba(201,168,76,.32);
+  transition:transform .25s cubic-bezier(.4,0,.2,1), box-shadow .25s;
+}
+.demo-facade:hover .demo-play { transform:translate(-50%,-50%) scale(1.07); box-shadow:0 16px 52px rgba(201,168,76,.45); }
+.demo-facade:active .demo-play { transform:translate(-50%,-50%) scale(.96); }
+.demo-play svg { width:26px; height:26px; margin-left:4px; }
+.demo-caption {
+  position:absolute; left:0; right:0; bottom:0; z-index:2;
+  padding:22px 26px; display:flex; align-items:center; justify-content:space-between; gap:16px;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+}
+.demo-caption em { font-style:normal; color:var(--gold); }
+.demo-frame { position:absolute; inset:0; width:100%; height:100%; border:0; }
+
+.demo-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:44px; }
+.demo-note { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.28); margin-top:22px; }
+
+.demo-anim { opacity:0; transform:translateY(20px); transition:opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1); }
+.demo-anim.revealed { opacity:1; transform:none; }
+
 @media(max-width:1080px){
   .pd-inner { grid-template-columns:1fr; gap:60px; }
   .pd-inner.rev { direction:ltr; }
   .value-grid { grid-template-columns:1fr 1fr; }
+  .demo-section { padding:90px 40px 100px; }
 }
 @media(max-width:640px){
   .value-grid { grid-template-columns:1fr; }
   .prod-tabs { overflow-x:auto; padding:0 24px; }
+  .demo-section { padding:72px 24px 80px; }
+  .demo-desc { margin-bottom:36px; }
+  .demo-play { width:60px; height:60px; }
+  .demo-play svg { width:20px; height:20px; }
+  .demo-caption { padding:14px 16px; font-size:9px; letter-spacing:.1em; }
+  .demo-actions { margin-top:32px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .demo-anim { opacity:1; transform:none; transition:none; }
+  .demo-thumb, .demo-play { transition:none; }
 }
 
 /* ── LOGO STYLES ─────────────────────────────────────────────────── */
@@ -528,6 +598,46 @@
   </div>
 </section>
 
+<!-- DÉMONSTRATION ADSCLASS -->
+<section class="demo-section" id="demo-adsclass">
+  <div class="demo-inner">
+
+    <div class="demo-label">ADSClass</div>
+    <h2 class="demo-title">Découvrez la plateforme<br><em>en action</em></h2>
+    <p class="demo-desc">
+      En quelques minutes, cette démonstration présente le fonctionnement réel de la plateforme
+      de gestion académique et administrative — suivi des étudiants, module IA pédagogique,
+      finances et tableaux de bord de pilotage.
+    </p>
+
+    <div class="demo-player demo-anim" id="adsclassDemo" data-reveal>
+      <button class="demo-facade" type="button" aria-label="Lire la démonstration vidéo d'ADSClass">
+        <img
+          class="demo-thumb"
+          src="https://i.ytimg.com/vi/A3BbGU0tHko/maxresdefault.jpg"
+          onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/A3BbGU0tHko/hqdefault.jpg'"
+          alt="Aperçu de la démonstration d'ADSClass, plateforme de gestion académique ADS ONEHUB"
+          width="1280" height="720" loading="lazy" decoding="async">
+        <span class="demo-play">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+        <span class="demo-caption">
+          <span>Démonstration officielle</span>
+          <em>ADSClass</em>
+        </span>
+      </button>
+    </div>
+
+    <div class="demo-actions">
+      <a href="contact.html" class="btn btn-gold">Demander une démonstration →</a>
+      <a href="tel:+212627616719" class="btn btn-outline-light">Parler à un conseiller</a>
+    </div>
+
+    <div class="demo-note">Démonstration personnalisée en visio — 45 minutes</div>
+
+  </div>
+</section>
+
 <!-- HOTEL-PMS -->
 <div id="hotelpms"></div>
 <section class="prod-detail light">
@@ -704,6 +814,24 @@
 function scrollTo(id) {
   document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
+
+/* Démonstration ADSClass — lecteur YouTube chargé au clic */
+(function () {
+  const player = document.getElementById('adsclassDemo');
+  const facade = player?.querySelector('.demo-facade');
+  if (!facade) return;
+
+  facade.addEventListener('click', function () {
+    const frame = document.createElement('iframe');
+    frame.className = 'demo-frame';
+    frame.src = 'https://www.youtube-nocookie.com/embed/A3BbGU0tHko?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+    frame.title = 'Démonstration ADSClass — ADS ONEHUB';
+    frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    frame.allowFullscreen = true;
+    frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    facade.replaceWith(frame);
+  }, { once: true });
+})();
 </script>
 <!-- ══ WHATSAPP FLOATING — ULTRA PREMIUM ══════════════════ -->
 <div class="wa-float" id="waFloat">
