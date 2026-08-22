@@ -821,6 +821,8 @@ function scrollTo(id) {
   const facade = player?.querySelector('.demo-facade');
   if (!facade) return;
 
+  if (!('IntersectionObserver' in window)) player.classList.add('revealed');
+
   facade.addEventListener('click', function () {
     const frame = document.createElement('iframe');
     frame.className = 'demo-frame';
