@@ -262,6 +262,14 @@
 }
 .demo-caption em { font-style:normal; color:var(--gold); }
 .demo-frame { position:absolute; inset:0; width:100%; height:100%; border:0; }
+.demo-duration {
+  position:absolute; top:18px; right:18px; z-index:2;
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.08em;
+  color:rgba(255,255,255,.85); background:rgba(8,15,26,.55);
+  border:1px solid rgba(255,255,255,.16); backdrop-filter:blur(8px);
+  padding:5px 11px; border-radius:100px;
+}
+.demo-video { width:100%; height:100%; object-fit:cover; display:block; background:#000; }
 
 .demo-actions { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:44px; }
 .demo-note { font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.28); margin-top:22px; }
@@ -283,6 +291,7 @@
   .demo-play { width:60px; height:60px; }
   .demo-play svg { width:20px; height:20px; }
   .demo-caption { padding:14px 16px; font-size:9px; letter-spacing:.1em; }
+  .demo-duration { top:12px; right:12px; font-size:9.5px; padding:4px 9px; }
   .demo-actions { margin-top:32px; }
 }
 @media (prefers-reduced-motion: reduce){
@@ -607,17 +616,17 @@
     <div class="demo-label">ADSClass</div>
     <h2 class="demo-title">Découvrez la plateforme<br><em>en action</em></h2>
     <p class="demo-desc">
-      En quelques minutes, cette démonstration présente le fonctionnement réel de la plateforme
+      En un peu moins d'une minute, cet aperçu présente le fonctionnement réel de la plateforme
       de gestion académique et administrative — suivi des étudiants, module IA pédagogique,
       finances et tableaux de bord de pilotage.
     </p>
 
     <div class="demo-player demo-anim" id="adsclassDemo" data-reveal>
+      <span class="demo-duration">0:43</span>
       <button class="demo-facade" type="button" aria-label="Lire la démonstration vidéo d'ADSClass">
         <img
           class="demo-thumb"
-          src="https://i.ytimg.com/vi/A3BbGU0tHko/maxresdefault.jpg"
-          onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/A3BbGU0tHko/hqdefault.jpg'"
+          src="demo-poster.jpg"
           alt="Aperçu de la démonstration d'ADSClass, plateforme de gestion académique ADS ONEHUB"
           width="1280" height="720" loading="lazy" decoding="async">
         <span class="demo-play">
@@ -817,7 +826,7 @@ function scrollTo(id) {
   document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-/* Démonstration ADSClass — lecteur YouTube chargé au clic */
+/* Démonstration ADSClass — lecteur vidéo natif, chargé au clic */
 (function () {
   const player = document.getElementById('adsclassDemo');
   const facade = player?.querySelector('.demo-facade');
@@ -826,14 +835,17 @@ function scrollTo(id) {
   if (!('IntersectionObserver' in window)) player.classList.add('revealed');
 
   facade.addEventListener('click', function () {
-    const frame = document.createElement('iframe');
-    frame.className = 'demo-frame';
-    frame.src = 'https://www.youtube-nocookie.com/embed/A3BbGU0tHko?autoplay=1&rel=0&modestbranding=1&playsinline=1';
-    frame.title = 'Démonstration ADSClass — ADS ONEHUB';
-    frame.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    frame.allowFullscreen = true;
-    frame.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-    facade.replaceWith(frame);
+    const video = document.createElement('video');
+    video.className = 'demo-video';
+    video.src = 'adsclass-demo.mp4';
+    video.controls = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.setAttribute('preload', 'auto');
+    video.setAttribute('aria-label', 'Démonstration ADSClass — ADS ONEHUB');
+    video.innerHTML = 'Votre navigateur ne prend pas en charge la lecture vidéo. <a href="adsclass-demo.mp4">Télécharger la vidéo</a>.';
+    facade.replaceWith(video);
+    video.play().catch(function () { /* lecture bloquée : les contrôles natifs restent disponibles */ });
   }, { once: true });
 })();
 </script>
